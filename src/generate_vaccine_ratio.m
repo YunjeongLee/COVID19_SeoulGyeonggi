@@ -163,7 +163,7 @@ end
 vaccine_2nd = [zeros(size(vaccine_2nd, 1), 2), vaccine_2nd];
 
 %% Generate csv file
-rownames = cellstr(datetime(2021, 2, 25, 'format', 'yyyy/MM/dd'):datetime(2021, 8, 31, 'format', 'yyyy/MM/dd'));
+rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 8, 31, 'format', 'yyyy/MM/dd'));
 varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
 
 % Change into table
