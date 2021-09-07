@@ -49,7 +49,7 @@ vaccine_before_0327 = [vaccine_before_0327(1:4), vaccine_before_0327(5:2:end-1) 
 vaccine_before_0327 = vaccine_before_0327/sum(vaccine_before_0327);
 
 % Generate total vaccine ratio
-rownames = datetime(2021, 2, 25):datetime(2021, 3, 27);
+rownames = datetime(2021, 2, 26):datetime(2021, 3, 27);
 vaccine_1st = repmat(vaccine_before_0327, length(rownames), 1);
 vaccine_2nd = repmat(vaccine_before_0327, length(rownames), 1);
 
