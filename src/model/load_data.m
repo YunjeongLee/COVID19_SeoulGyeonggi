@@ -34,9 +34,16 @@ vaccine_2nd = readmatrix(filename, 'range', 'B2:J199');
 vaccine_1st = round(vaccine_number(:, 1) .* vaccine_1st);
 vaccine_2nd = round(vaccine_number(:, 2) .* vaccine_2nd);
 
+% Add two weeks in front of 2021/02/15
+vaccine_1st = [zeros(14, size(vaccine_1st, 2)); vaccine_1st];
+vaccine_2nd = [zeros(14, size(vaccine_2nd, 2)); vaccine_2nd];
+
 %% Load vaccine efficacy
 filename = '../data/vaccine/vaccine_efficacy.xlsx';
 vaccine_eff = readmatrix(filename, 'range', 'B2:C199');
+
+% Add two weeks in front of 2021/02/15
+vaccine_eff = [zeros(14, size(vaccine_eff, 2)); vaccine_eff];
 
 %% Load case fatality rate and proportion of severe illness
 cfr = readmatrix('../data/covid19/case_fatality_rate.csv', 'range', 'A2:I2');
