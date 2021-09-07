@@ -176,5 +176,5 @@ vaccine_2nd = array2table(vaccine_2nd, 'RowNames', rownames, 'VariableNames', va
 
 filename1 = "../data/vaccine/1st_dose_ratio_by_age.csv";
 filename2 = "../data/vaccine/2nd_dose_ratio_by_age.csv";
-writetable(vaccine_1st, filename1);
-writetable(vaccine_2nd, filename2);
+writetable(vaccine_1st, filename1,'WriteRowNames',true);
+writetable(vaccine_2nd, filename2,'WriteRowNames',true);
