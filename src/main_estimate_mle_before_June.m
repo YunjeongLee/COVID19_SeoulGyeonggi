@@ -38,9 +38,9 @@ params = {% Parameters to be estimated
 %% Parameter estimation (2021/02/15 ~ 2021/05/31)
 isEstimated = cell2mat(params(:, 3));
 theta0 = cell2mat(params(isEstimated, 2));
-cost0 = cost_mle(data, params, theta0);
+cost0 = cost_mle_covid19(data, params, theta0);
 
 lb = zeros(length(theta0), 1);
 ub = inf * ones(length(theta0), 1);
 
-[theta_mle, cost_mle, time_mle] = estimator_gls(data1, @cost_mle, @cost_mle, params, theta0, 10, 1e-3, lb, ub);
+[theta_mle, cost_mle, time_mle] = estimator_gls(data1, @cost_mle_covid19, @cost_mle_covid19, params, theta0, 10, 1e-3, lb, ub);
