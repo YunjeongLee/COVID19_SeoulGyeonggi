@@ -2,7 +2,7 @@ clear; close all; clc;
 
 %% Restore path
 restoredefaultpath
-addpath 'model' 'optimizer' 'estimator' 'documentation'
+addpath 'model' 'optimizer' 'estimator' 'documentation' 'etc'
 
 %% Load data
 [data, date, delta_prop, contact, init_beta, y01, ...
