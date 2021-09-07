@@ -46,11 +46,11 @@ for i = 1:length(tspan_)
         FOI_V = (beta_t * V(i, :)')';
         % Update states
         S(i+1, :) = S(i, :) + dt_ * (- FOI_I .* S(i, :) - num_dose1 .* vac_eff_t(2));
-        E(i+1, :) = E(i, :) + dt_ * (FOI_I .* S(i, :) + vac_eff_t(2)/vac_eff_t(1) * FOI_V .* V(i, :) - kappa_ .* E(i, :));
+        E(i+1, :) = E(i, :) + dt_ * (FOI_I .* S(i, :) + (1-vac_eff_t(1))/vac_eff_t(2) * FOI_V .* V(i, :) - kappa_ .* E(i, :));
         I(i+1, :) = I(i, :) + dt_ * (kappa_ .* E(i, :) - alpha_ .* I(i, :));
         H(i+1, :) = H(i, :) + dt_ * (alpha_ .* I(i, :) - gamma_ .* H(i, :));
         R(i+1, :) = R(i, :) + dt_ * (gamma_ .* H(i, :) + num_dose2 .* vac_eff_t(2));
-        V(i+1, :) = V(i, :) + dt_ * (num_dose1 .* vac_eff_t(2) - vac_eff_t(2)/vac_eff_t(1) * FOI_V .* V(i, :) - num_dose2 .* vac_eff_t(2));
+        V(i+1, :) = V(i, :) + dt_ * (num_dose1 .* vac_eff_t(2) - (1-vac_eff_t(1))/vac_eff_t(2) * FOI_V .* V(i, :) - num_dose2 .* vac_eff_t(2));
     end
 end
 
