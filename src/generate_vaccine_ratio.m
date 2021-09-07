@@ -49,7 +49,7 @@ vaccine_before_0327 = [vaccine_before_0327(1:4), vaccine_before_0327(5:2:end-1) 
 vaccine_before_0327 = vaccine_before_0327/sum(vaccine_before_0327);
 
 % Generate total vaccine ratio
-rownames = datetime(2021, 2, 25):datetime(2021, 3, 27);
+rownames = datetime(2021, 2, 26):datetime(2021, 3, 27);
 vaccine_1st = repmat(vaccine_before_0327, length(rownames), 1);
 vaccine_2nd = repmat(vaccine_before_0327, length(rownames), 1);
 
@@ -163,8 +163,12 @@ end
 vaccine_2nd = [zeros(size(vaccine_2nd, 1), 2), vaccine_2nd];
 
 %% Generate csv file
-rownames = cellstr(datetime(2021, 2, 25, 'format', 'yyyy/MM/dd'):datetime(2021, 8, 31, 'format', 'yyyy/MM/dd'));
+rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 8, 31, 'format', 'yyyy/MM/dd'));
 varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
+
+% Add zeros in front of 2021/02/26
+vaccine_1st = [zeros(11, size(vaccine_1st, 2)); vaccine_1st];
+vaccine_2nd = [zeros(11, size(vaccine_2nd, 2)); vaccine_2nd];
 
 % Change into table
 vaccine_1st = array2table(vaccine_1st, 'RowNames', rownames, 'VariableNames', varnames);
@@ -172,5 +176,5 @@ vaccine_2nd = array2table(vaccine_2nd, 'RowNames', rownames, 'VariableNames', va
 
 filename1 = "../data/vaccine/1st_dose_ratio_by_age.csv";
 filename2 = "../data/vaccine/2nd_dose_ratio_by_age.csv";
-writetable(vaccine_1st, filename1);
-writetable(vaccine_2nd, filename2);
+writetable(vaccine_1st, filename1,'WriteRowNames',true);
+writetable(vaccine_2nd, filename2,'WriteRowNames',true);
