@@ -40,8 +40,8 @@ for i = 1:length(tspan_)-1
         % Current index
         ic = (i-1)/dt_ + j;
         % S and V at time t
-        St = S(i, :);
-        Vt = V(i, :);
+        St = S(ic, :);
+        Vt = V(ic, :);
         % Beta at time t
         beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
         % Compute F
@@ -51,7 +51,7 @@ for i = 1:length(tspan_)-1
             - kappa_ * eye(num_grp), alpha_ * eye(num_grp), zeros(num_grp); ...
             zeros(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
         % Compute reproduction number at time t
-        Rt(i) = max(abs(eig(F/V)));
+        Rt(ic) = max(abs(eig(F/V)));
     end
 end
 end
