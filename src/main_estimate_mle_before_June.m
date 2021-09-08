@@ -39,7 +39,7 @@ params = {% Parameters to be estimated
 %% Parameter estimation (2021/02/15 ~ 2021/05/31)
 isEstimated = cell2mat(params(:, 3));
 theta0 = cell2mat(params(isEstimated, 2));
-cost0 = cost_mle_covid19(data, params, theta0);
+cost0 = cost_mle_covid19(data1, params, theta0);
 
 lb = zeros(length(theta0), 1);
 ub = inf * ones(length(theta0), 1);
