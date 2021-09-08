@@ -49,8 +49,6 @@ for i = 1:length(tspan_)
         t = t + dt_;
         % Beta at time t
         beta_t = beta_ .* contact_ .* delta_effect(t, delta_prop_, delta_) .* social_distance(t);
-        % Vaccine efficacy at time t
-        vac_eff_t = vaccine_efficacy(t, vac_eff_);
         % FOI at time t for I and V
         FOI_I = (beta_t * I(i, :)')';
         FOI_V = (beta_t * V(i, :)')';
