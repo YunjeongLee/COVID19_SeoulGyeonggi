@@ -56,7 +56,6 @@ for i = 1:length(tspan_)
         beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
         % FOI at time t for I and V
         FOI_I = (beta_t * I(i, :)')';
-        FOI_V = (beta_t * V(i, :)')';
         % Current index and next index
         ic = (i-1)/dt_ + j;
         in = ic + 1;
