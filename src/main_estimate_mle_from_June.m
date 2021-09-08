@@ -20,7 +20,7 @@ gamma = 1/14;
 tspan = 0:size(data, 1)-1;
 
 params = {% Parameters to be estimated
-          'beta', init_beta, true, '$\beta_1';
+          'beta', theta_mle, false, '$\beta_1';
           'delta', 1, true, '$\delta$';
           % Initial state, time stamp and contact matrix
           'y0', y01, false, '$y_0$';
