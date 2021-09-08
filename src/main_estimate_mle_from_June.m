@@ -21,7 +21,7 @@ tspan = 0:size(data, 1)-1;
 
 params = {% Parameters to be estimated
           'beta', theta_mle, false, '$\beta_1';
-          'delta', 1, true, '$\delta$';
+          'delta', 7, true, '$\delta$';
           % Initial state, time stamp and contact matrix
           'y0', y01, false, '$y_0$';
           'tspan', tspan, false, 'time stamp';
