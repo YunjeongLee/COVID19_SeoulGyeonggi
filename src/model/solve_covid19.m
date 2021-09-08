@@ -60,7 +60,7 @@ for i = 1:length(tspan_)
         ic = (i-1)/dt_ + j;
         in = ic + 1;
         % Update states
-        S(in, :) = S(ic, :) + dt_ * (- FOI_I .* S(ic, :) - num_dose1 .* vac_eff_t(2));
+        S(in, :) = S(ic, :) + dt_ * (- FOI .* S(ic, :) - num_dose1 .* vac_eff_t(2));
         E(in, :) = E(ic, :) + dt_ * (FOI .* S(ic, :) + vac_1st_fail * FOI .* V(ic, :) - kappa_ .* E(ic, :));
         I(in, :) = I(ic, :) + dt_ * (kappa_ .* E(ic, :) - alpha_ .* I(ic, :));
         H(in, :) = H(ic, :) + dt_ * (alpha_ .* I(ic, :) - gamma_ .* H(ic, :));
