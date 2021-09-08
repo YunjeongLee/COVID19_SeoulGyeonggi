@@ -54,3 +54,8 @@ mle_table = table([theta0; cost0; 0], [theta_mle; cost_mle; time_mle], 'RowNames
 lt = table2latex(mle_table, {'%.4e', 2});
 save_document(lt, sprintf('%s/result.tex', results_path))
 
+%% Generate figure
+visualize_fit(data, params, theta_mle, date, cfr, severe, results_path);
+
+%% Save all variables
+save(sprintf('%s/result.mat', results_path))
