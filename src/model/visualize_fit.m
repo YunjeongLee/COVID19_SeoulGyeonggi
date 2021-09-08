@@ -23,8 +23,8 @@ Rt = compute_rep_num(parameter, sol);
 figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
 hold on;
-plot(date, sum(daily_confirmed, 2));
-plot(date, sum(data, 2), '*');
+plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
+plot(date, sum(data, 2), ':*');
 hold off;
 legend('Model', 'Data')
 xlabel('Date');
@@ -33,7 +33,7 @@ sgtitle('Confirmed')
 set(gca, 'fontsize', 12);
 
 subplot(1, 3, 2)
-plot(date, sum(daily_deaths, 2));
+plot(date, sum(daily_deaths, 2), 'linewidth', 2);
 legend('Model')
 xlabel('Date');
 ylabel('Cases');
@@ -41,7 +41,7 @@ sgtitle('Deaths')
 set(gca, 'fontsize', 12);
 
 subplot(1, 3, 3)
-plot(date, sum(daily_severe, 2));
+plot(date, sum(daily_severe, 2), 'linewidth', 2);
 legend('Model')
 xlabel('Date');
 ylabel('Cases');
@@ -56,7 +56,7 @@ figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
 hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)));
-plot(date, cumsum(sum(data, 2)), '*');
+plot(date, cumsum(sum(data, 2)), ':*', 'linewidth', 2);
 hold off;
 legend('Model', 'Data')
 xlabel('Date');
@@ -65,7 +65,7 @@ sgtitle('Confirmed')
 set(gca, 'fontsize', 12);
 
 subplot(1, 3, 2)
-plot(date, cumsum(sum(daily_deaths, 2)));
+plot(date, cumsum(sum(daily_deaths, 2)), 'linewidth', 2);
 legend('Model')
 xlabel('Date');
 ylabel('Cases');
@@ -73,7 +73,7 @@ sgtitle('Deaths')
 set(gca, 'fontsize', 12);
 
 subplot(1, 3, 3)
-plot(date, cumsum(sum(daily_severe, 2)));
+plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
 legend('Model')
 xlabel('Date');
 ylabel('Cases');
@@ -90,8 +90,8 @@ figure('pos', [10 10 900 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     hold on;
-    plot(date, daily_confirmed(:, i));
-    plot(date, data(:, i), '*');
+    plot(date, daily_confirmed(:, i), 'linewidth', 1.5);
+    plot(date, data(:, i), ':*', 'markersize', 1.5);
     hold off;
     legend('Model', 'Data')
     sgtitle(ages{i})
@@ -105,8 +105,8 @@ figure('pos', [10 10 900 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     hold on;
-    plot(date, cumsum(daily_confirmed(:, i)));
-    plot(date, cumsum(data(:, i)), '*');
+    plot(date, cumsum(daily_confirmed(:, i)), 'linewidth', 1.5);
+    plot(date, cumsum(data(:, i)), ':*', 'markersize', 1.5);
     hold off;
     xlabel('Date');
     ylabel('Cases');
@@ -121,10 +121,7 @@ saveas(gca, sprintf('%s/cumul_confirmed_by_age.eps', results_path), 'epsc');
 figure('pos', [10 10 900 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
-    hold on;
-    plot(date, daily_deaths(:, i));
-    plot(date, data(:, i), '*');
-    hold off;
+    plot(date, daily_deaths(:, i), 'linewidth', 1.5);
     xlabel('Date');
     ylabel('Cases');
     legend('Model', 'Data')
@@ -138,10 +135,7 @@ saveas(gca, sprintf('%s/daily_deaths_by_age.eps', results_path), 'epsc');
 figure('pos', [10 10 900 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
-    hold on;
-    plot(date, cumsum(daily_deaths(:, i)));
-    plot(date, cumsum(data(:, i)), '*');
-    hold off;
+    plot(date, cumsum(daily_deaths(:, i)), 'linewidth', 1.5);
     xlabel('Date');
     ylabel('Cases');
     legend('Model', 'Data')
@@ -155,10 +149,7 @@ saveas(gca, sprintf('%s/cumul_deaths_by_age.eps', results_path), 'epsc');
 figure('pos', [10 10 900 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
-    hold on;
-    plot(date, daily_severe(:, i));
-    plot(date, data(:, i), '*');
-    hold off;
+    plot(date, daily_severe(:, i), 'linewidth', 1.5);
     xlabel('Date');
     ylabel('Cases');
     legend('Model', 'Data')
@@ -172,10 +163,7 @@ saveas(gca, sprintf('%s/daily_severe_by_age.eps', results_path), 'epsc');
 figure('pos', [10 10 900 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
-    hold on;
-    plot(date, cumsum(daily_severe(:, i)));
-    plot(date, cumsum(data(:, i)), '*');
-    hold off;
+    plot(date, cumsum(daily_severe(:, i)), 'linewidth', 1.5);
     xlabel('Date');
     ylabel('Cases');
     legend('Model', 'Data')
@@ -187,7 +175,10 @@ saveas(gca, sprintf('%s/cumul_severe_by_age.eps', results_path), 'epsc');
 
 %% Plot reproduction number
 figure('pos', [10 10 1600 900]);
-plot(date, Rt);
+hold on;
+plot(date, Rt(2:1/dt_:end), 'linewidth', 2);
+yline(1, '-k');
+hold off;
 xlabel('Date')
 ylabel('R_t')
 title('Time-dependent reproduction number')
