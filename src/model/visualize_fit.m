@@ -26,7 +26,7 @@ hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
 plot(date, sum(data, 2), ':*');
 hold off;
-legend('Model', 'Data')
+legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
@@ -34,7 +34,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, sum(daily_deaths, 2), 'linewidth', 2);
-legend('Model')
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Deaths')
@@ -42,7 +42,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, sum(daily_severe, 2), 'linewidth', 2);
-legend('Model')
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Severe')
@@ -58,7 +58,7 @@ hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)));
 plot(date, cumsum(sum(data, 2)), ':*', 'linewidth', 2);
 hold off;
-legend('Model', 'Data')
+legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
@@ -66,7 +66,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, cumsum(sum(daily_deaths, 2)), 'linewidth', 2);
-legend('Model')
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Deaths')
@@ -74,7 +74,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
-legend('Model')
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Severe')
@@ -93,7 +93,7 @@ for i = 1:size(contact_, 1)
     plot(date, daily_confirmed(:, i), 'linewidth', 1.5);
     plot(date, data(:, i), ':*', 'markersize', 1.5);
     hold off;
-    legend('Model', 'Data')
+    legend('Model', 'Data', 'location', 'northwest')
     title(ages{i})
     set(gca, 'fontsize', 15);
 end
@@ -110,7 +110,7 @@ for i = 1:size(contact_, 1)
     hold off;
     xlabel('Date');
     ylabel('Cases');
-    legend('Model', 'Data')
+    legend('Model', 'Data', 'location', 'northwest')
     title(ages{i})
     set(gca, 'fontsize', 15);
 end
