@@ -86,7 +86,7 @@ saveas(gca, sprintf('%s/cumul_confirmed_all_age.eps', results_path), 'epsc');
 %% Visualize daily confirmed cases, deaths, and severe by age
 ages = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
 % Daily confirmed cases
-figure('pos', [10 10 900 900]);
+figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     hold on;
@@ -101,7 +101,7 @@ sgtitle('Daily confirmed cases by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/daily_confirmed_by_age.eps', results_path), 'epsc');
 
 % Cumulative confirmed cases
-figure('pos', [10 10 900 900]);
+figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     hold on;
@@ -118,7 +118,7 @@ sgtitle('Cumulative confirmed cases by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/cumul_confirmed_by_age.eps', results_path), 'epsc');
 
 % Daily Deaths
-figure('pos', [10 10 900 900]);
+figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     plot(date, daily_deaths(:, i), 'linewidth', 1.5);
@@ -131,7 +131,7 @@ sgtitle('Daily deaths by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/daily_deaths_by_age.eps', results_path), 'epsc');
 
 % Cumulative deaths
-figure('pos', [10 10 900 900]);
+figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     plot(date, cumsum(daily_deaths(:, i)), 'linewidth', 1.5);
@@ -144,7 +144,7 @@ sgtitle('Cumulative deaths by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/cumul_deaths_by_age.eps', results_path), 'epsc');
 
 % Daily severe cases
-figure('pos', [10 10 900 900]);
+figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     plot(date, daily_severe(:, i), 'linewidth', 1.5);
@@ -157,7 +157,7 @@ sgtitle('Daily severe cases by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/daily_severe_by_age.eps', results_path), 'epsc');
 
 % Cumulative severe cases
-figure('pos', [10 10 900 900]);
+figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     plot(date, cumsum(daily_severe(:, i)), 'linewidth', 1.5);
