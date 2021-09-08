@@ -177,6 +177,7 @@ yline(1, '-k');
 hold off;
 xlabel('Date')
 ylabel('R_t')
+ylim([0, 1.6])
 title('Time-dependent reproduction number')
 set(gca, 'fontsize', 20);
 saveas(gca, sprintf('%s/rep_num.eps', results_path), 'epsc');
