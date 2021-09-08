@@ -44,3 +44,13 @@ lb = zeros(length(theta0), 1);
 ub = inf * ones(length(theta0), 1);
 
 [theta_mle, cost_mle, time_mle] = estimator_gls(data1, @cost_mle_covid19, @cost_mle_covid19, params, theta0, 10, 1e-3, lb, ub);
+
+%% Generate params table
+results_path = '../results/estimate_before_June';
+mkdir(results_path);
+
+ROW = params(isEstimated, 4); ROW{end+1} = 'Cost'; ROW{end+1} = 'Time';
+mle_table = table([theta0; cost0; 0], [theta_mle; cost_mle; time_mle], 'RowNames', ROW, 'VariableNames', {'Initial', 'Estimate'})
+lt = table2latex(mle_table, {'%.4e', 2});
+save_document(lt, sprintf('%s/result.tex', results_path))
+
