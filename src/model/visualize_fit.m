@@ -108,6 +108,8 @@ for i = 1:size(contact_, 1)
     plot(date, cumsum(daily_confirmed(:, i)));
     plot(date, cumsum(data(:, i)), '*');
     hold off;
+    xlabel('Date');
+    ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
     set(gca, 'fontsize', 12);
@@ -123,6 +125,8 @@ for i = 1:size(contact_, 1)
     plot(date, daily_deaths(:, i));
     plot(date, data(:, i), '*');
     hold off;
+    xlabel('Date');
+    ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
     set(gca, 'fontsize', 12);
@@ -138,6 +142,8 @@ for i = 1:size(contact_, 1)
     plot(date, cumsum(daily_deaths(:, i)));
     plot(date, cumsum(data(:, i)), '*');
     hold off;
+    xlabel('Date');
+    ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
     set(gca, 'fontsize', 12);
@@ -153,6 +159,8 @@ for i = 1:size(contact_, 1)
     plot(date, daily_severe(:, i));
     plot(date, data(:, i), '*');
     hold off;
+    xlabel('Date');
+    ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
     set(gca, 'fontsize', 12);
@@ -168,6 +176,8 @@ for i = 1:size(contact_, 1)
     plot(date, cumsum(daily_severe(:, i)));
     plot(date, cumsum(data(:, i)), '*');
     hold off;
+    xlabel('Date');
+    ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
     set(gca, 'fontsize', 12);
