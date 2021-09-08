@@ -20,6 +20,7 @@ V = sol(:, 5*num_grp:end);
 Rt = zeros(length(tspan_)/dt_, 1);
 t = 0;
 for i = 1:size(Rt, 1)
+    for j = 1:1/dt_
     % Time stamp
     t = t + dt_;
     % S and V at time t
@@ -37,5 +38,6 @@ for i = 1:size(Rt, 1)
         zeros(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
     % Compute reproduction number at time t
     Rt(i) = max(abs(eig(F/V)));
+    end
 end
 end
