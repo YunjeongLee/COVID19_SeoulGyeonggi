@@ -37,6 +37,13 @@ for i = 1:length(tspan_)
     num_dose2 = vac_2nd_(i, :);
     % Vaccine efficacy at time t
     vac_eff_t = vac_eff_(i, :);
+    % Delta effect at time t
+    delta_prop_t = delta_prop_(i);
+    if delta_prop_t == 0
+        delta_effect_t = 1;
+    else
+        delta_effect_t = delta_prop_t * delta_;
+    end
     for j = 1:1/dt_
         % Time stamp
         t = t + dt_;
