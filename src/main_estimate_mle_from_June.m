@@ -45,7 +45,7 @@ ub = inf * ones(length(theta0), 1);
 [theta_mle, cost_mle, time_mle] = estimator_gls(data, @cost_mle_covid19, @cost_mle_covid19, params, theta0, 10, 1e-3, lb, ub);
 
 %% Generate params table
-results_path = '../results/estimate_before_June';
+results_path = '../results/estimate_from_June';
 mkdir(results_path);
 
 ROW = params(isEstimated, 4); ROW{end+1} = 'Cost'; ROW{end+1} = 'Time';
