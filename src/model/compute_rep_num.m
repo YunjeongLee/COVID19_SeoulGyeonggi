@@ -19,7 +19,7 @@ V = sol(:, 5*num_grp:end);
 %% Compute time-dependent reproduction number
 Rt = zeros(length(tspan_)/dt_, 1);
 t = 0;
-for i = 1:size(Rt, 1)
+for i = 1:length(tspan_)-1
     for j = 1:1/dt_
     % Time stamp
     t = t + dt_;
