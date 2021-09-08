@@ -48,7 +48,7 @@ for i = 1:length(tspan_)
         % Time stamp
         t = t + dt_;
         % Beta at time t
-        beta_t = beta_ .* contact_ .* delta_effect(t, delta_prop_, delta_) .* social_distance(t);
+        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
         % FOI at time t for I and V
         FOI_I = (beta_t * I(i, :)')';
         FOI_V = (beta_t * V(i, :)')';
