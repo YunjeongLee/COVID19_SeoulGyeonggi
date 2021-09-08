@@ -47,7 +47,7 @@ xlabel('Date');
 ylabel('Cases');
 title('Severe')
 set(gca, 'fontsize', 15);
-sgtitle('Daily severe cases for all ages', 'fontsize', 20)
+sgtitle('Daily incident cases for all ages', 'fontsize', 20)
 
 saveas(gca, sprintf('%s/daily_confirmed_all_age.eps', results_path), 'epsc');
 
