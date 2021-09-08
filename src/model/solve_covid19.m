@@ -53,7 +53,7 @@ for i = 1:length(tspan_)
         FOI_I = (beta_t * I(i, :)')';
         FOI_V = (beta_t * V(i, :)')';
         % Current index and next index
-        ic = (i-1)/dt + j;
+        ic = (i-1)/dt_ + j;
         in = ic + 1;
         % Update states
         S(in, :) = S(ic, :) + dt_ * (- FOI_I .* S(ic, :) - num_dose1 .* vac_eff_t(2));
