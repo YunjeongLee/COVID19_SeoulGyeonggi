@@ -19,12 +19,12 @@ dt_ = parameter.dt;
 num_grp = size(contact_, 1);
 
 % Memory allocation
-S = zeros(length(tspan_)+1, num_grp);
-E = zeros(length(tspan_)+1, num_grp);
-I = zeros(length(tspan_)+1, num_grp);
-H = zeros(length(tspan_)+1, num_grp);
-R = zeros(length(tspan_)+1, num_grp);
-V = zeros(length(tspan_)+1, num_grp);
+S = zeros(length(tspan_)/dt_, num_grp);
+E = zeros(length(tspan_)/dt_, num_grp);
+I = zeros(length(tspan_)/dt_, num_grp);
+H = zeros(length(tspan_)/dt_, num_grp);
+R = zeros(length(tspan_)/dt_, num_grp);
+V = zeros(length(tspan_)/dt_, num_grp);
 
 % Initial state
 S(1, :) = y0_(1:num_grp); E(1, :) = y0_(num_grp+1:2*num_grp);
