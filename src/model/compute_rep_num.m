@@ -45,13 +45,13 @@ for i = 1:length(tspan_)-1
         % Beta at time t
         beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
         % Compute F
-        F = [zeros(num_grp), beta_t .* (St' + vac_1st_fail * Vt'), zeros(num_grp); ...
+        F0 = [zeros(num_grp), beta_t .* (St' + vac_1st_fail * Vt'), zeros(num_grp); ...
             zeros(2*num_grp, 3*num_grp)];
-        V = [kappa_ * eye(num_grp), zeros(num_grp, 2*num_grp); ...
+        V0 = [kappa_ * eye(num_grp), zeros(num_grp, 2*num_grp); ...
             - kappa_ * eye(num_grp), alpha_ * eye(num_grp), zeros(num_grp); ...
             zeros(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
         % Compute reproduction number at time t
-        Rt(ic) = max(abs(eig(F/V)));
+        Rt(ic) = max(abs(eig(F0/V0)));
     end
 end
 end
