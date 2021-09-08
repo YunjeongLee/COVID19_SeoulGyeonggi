@@ -7,14 +7,14 @@ kappa_ = parameter.kappa;
 alpha_ = parameter.alpha;
 gamma_ = parameter.gamma;
 delta_prop_ = parameter.delta_prop;
-delta_ = parameter.delta_;
+delta_ = parameter.delta;
 vac_eff_ = parameter.vac_eff;
 dt_ = parameter.dt;
 
 %% Find S and V
 num_grp = size(contact_, 1);
 S = sol(:, 1:num_grp);
-V = sol(:, 5*num_grp:end);
+V = sol(:, 5*num_grp+1:end);
 
 %% Compute time-dependent reproduction number
 Rt = zeros(length(tspan_)/dt_, 1);
