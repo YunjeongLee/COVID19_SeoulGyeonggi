@@ -16,6 +16,7 @@ gamma = 1/14;
 % Select subset of data (2021/02/15 ~ 2021/05/31, since delta stars from 2021/06/01
 data1 = data(1:106, :);
 tspan1 = 0:size(data1, 1)-1;
+date1 = date(1:106, :);
 
 params = {% Parameters to be estimated
           'beta', init_beta, true, '$\beta_1';
