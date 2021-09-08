@@ -29,7 +29,7 @@ hold off;
 legend('Model', 'Data')
 xlabel('Date');
 ylabel('Cases');
-sgtitle('Confirmed')
+title('Confirmed')
 set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
@@ -37,7 +37,7 @@ plot(date, sum(daily_deaths, 2), 'linewidth', 2);
 legend('Model')
 xlabel('Date');
 ylabel('Cases');
-sgtitle('Deaths')
+title('Deaths')
 set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
@@ -45,9 +45,9 @@ plot(date, sum(daily_severe, 2), 'linewidth', 2);
 legend('Model')
 xlabel('Date');
 ylabel('Cases');
-sgtitle('Severe')
-title('Daily severe cases for all ages')
+title('Severe')
 set(gca, 'fontsize', 15);
+sgtitle('Daily severe cases for all ages', 'fontsize', 20)
 
 saveas(gca, sprintf('%s/daily_confirmed_all_age.eps', results_path), 'epsc');
 
@@ -61,7 +61,7 @@ hold off;
 legend('Model', 'Data')
 xlabel('Date');
 ylabel('Cases');
-sgtitle('Confirmed')
+title('Confirmed')
 set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
@@ -69,7 +69,7 @@ plot(date, cumsum(sum(daily_deaths, 2)), 'linewidth', 2);
 legend('Model')
 xlabel('Date');
 ylabel('Cases');
-sgtitle('Deaths')
+title('Deaths')
 set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
@@ -77,9 +77,9 @@ plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
 legend('Model')
 xlabel('Date');
 ylabel('Cases');
-sgtitle('Severe')
-title('Cumulative cases for all ages')
+title('Severe')
 set(gca, 'fontsize', 15);
+sgtitle('Cumulative cases for all ages', 'fontsize', 20)
 
 saveas(gca, sprintf('%s/cumul_confirmed_all_age.eps', results_path), 'epsc');
 
@@ -94,10 +94,10 @@ for i = 1:size(contact_, 1)
     plot(date, data(:, i), ':*', 'markersize', 1.5);
     hold off;
     legend('Model', 'Data')
-    sgtitle(ages{i})
+    title(ages{i})
     set(gca, 'fontsize', 15);
 end
-title('Daily confirmed cases by age')
+sgtitle('Daily confirmed cases by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/daily_confirmed_by_age.eps', results_path), 'epsc');
 
 % Cumulative confirmed cases
@@ -111,10 +111,10 @@ for i = 1:size(contact_, 1)
     xlabel('Date');
     ylabel('Cases');
     legend('Model', 'Data')
-    sgtitle(ages{i})
+    title(ages{i})
     set(gca, 'fontsize', 15);
 end
-title('Cumulative confirmed cases by age')
+sgtitle('Cumulative confirmed cases by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/cumul_confirmed_by_age.eps', results_path), 'epsc');
 
 % Daily Deaths
@@ -124,11 +124,10 @@ for i = 1:size(contact_, 1)
     plot(date, daily_deaths(:, i), 'linewidth', 1.5);
     xlabel('Date');
     ylabel('Cases');
-    legend('Model', 'Data')
-    sgtitle(ages{i})
+    title(ages{i})
     set(gca, 'fontsize', 15);
 end
-title('Daily confirmed cases by age')
+sgtitle('Daily deaths by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/daily_deaths_by_age.eps', results_path), 'epsc');
 
 % Cumulative deaths
@@ -138,11 +137,10 @@ for i = 1:size(contact_, 1)
     plot(date, cumsum(daily_deaths(:, i)), 'linewidth', 1.5);
     xlabel('Date');
     ylabel('Cases');
-    legend('Model', 'Data')
-    sgtitle(ages{i})
+    title(ages{i})
     set(gca, 'fontsize', 15);
 end
-title('Cumulative confirmed cases by age')
+sgtitle('Cumulative deaths by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/cumul_deaths_by_age.eps', results_path), 'epsc');
 
 % Daily severe cases
@@ -152,11 +150,10 @@ for i = 1:size(contact_, 1)
     plot(date, daily_severe(:, i), 'linewidth', 1.5);
     xlabel('Date');
     ylabel('Cases');
-    legend('Model', 'Data')
-    sgtitle(ages{i})
+    title(ages{i})
     set(gca, 'fontsize', 15);
 end
-title('Daily confirmed cases by age')
+sgtitle('Daily severe cases by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/daily_severe_by_age.eps', results_path), 'epsc');
 
 % Cumulative severe cases
@@ -166,11 +163,10 @@ for i = 1:size(contact_, 1)
     plot(date, cumsum(daily_severe(:, i)), 'linewidth', 1.5);
     xlabel('Date');
     ylabel('Cases');
-    legend('Model', 'Data')
-    sgtitle(ages{i})
+    title(ages{i})
     set(gca, 'fontsize', 15);
 end
-title('Cumulative confirmed cases by age')
+sgtitle('Cumulative severe cases by age', 'fontsize', 20)
 saveas(gca, sprintf('%s/cumul_severe_by_age.eps', results_path), 'epsc');
 
 %% Plot reproduction number
