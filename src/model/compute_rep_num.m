@@ -35,21 +35,21 @@ for i = 1:length(tspan_)-1
         delta_effect_t = delta_prop_t * delta_;
     end
     for j = 1:1/dt_
-    % Time stamp
-    t = t + dt_;
-    % S and V at time t
-    St = S(i, :);
-    Vt = V(i, :);
-    % Beta at time t
-    beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
-    % Compute F
-    F = [zeros(num_grp), beta_t .* (St' + vac_1st_fail * Vt'), zeros(num_grp); ...
-        zeros(2*num_grp, 3*num_grp)];
-    V = [kappa_ * eye(num_grp), zeros(num_grp, 2*num_grp); ...
-        - kappa_ * eye(num_grp), alpha_ * eye(num_grp), zeros(num_grp); ...
-        zeros(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
-    % Compute reproduction number at time t
-    Rt(i) = max(abs(eig(F/V)));
+        % Time stamp
+        t = t + dt_;
+        % S and V at time t
+        St = S(i, :);
+        Vt = V(i, :);
+        % Beta at time t
+        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
+        % Compute F
+        F = [zeros(num_grp), beta_t .* (St' + vac_1st_fail * Vt'), zeros(num_grp); ...
+            zeros(2*num_grp, 3*num_grp)];
+        V = [kappa_ * eye(num_grp), zeros(num_grp, 2*num_grp); ...
+            - kappa_ * eye(num_grp), alpha_ * eye(num_grp), zeros(num_grp); ...
+            zeros(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
+        % Compute reproduction number at time t
+        Rt(i) = max(abs(eig(F/V)));
     end
 end
 end
