@@ -30,7 +30,7 @@ legend('Model', 'Data')
 xlabel('Date');
 ylabel('Cases');
 sgtitle('Confirmed')
-set(gca, 'fontsize', 12);
+set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, sum(daily_deaths, 2), 'linewidth', 2);
@@ -38,7 +38,7 @@ legend('Model')
 xlabel('Date');
 ylabel('Cases');
 sgtitle('Deaths')
-set(gca, 'fontsize', 12);
+set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, sum(daily_severe, 2), 'linewidth', 2);
@@ -46,8 +46,8 @@ legend('Model')
 xlabel('Date');
 ylabel('Cases');
 sgtitle('Severe')
-set(gca, 'fontsize', 12);
 title('Daily severe cases for all ages')
+set(gca, 'fontsize', 15);
 
 saveas(gca, sprintf('%s/daily_confirmed_all_age.eps', results_path), 'epsc');
 
@@ -62,7 +62,7 @@ legend('Model', 'Data')
 xlabel('Date');
 ylabel('Cases');
 sgtitle('Confirmed')
-set(gca, 'fontsize', 12);
+set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, cumsum(sum(daily_deaths, 2)), 'linewidth', 2);
@@ -70,7 +70,7 @@ legend('Model')
 xlabel('Date');
 ylabel('Cases');
 sgtitle('Deaths')
-set(gca, 'fontsize', 12);
+set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
@@ -78,8 +78,8 @@ legend('Model')
 xlabel('Date');
 ylabel('Cases');
 sgtitle('Severe')
-set(gca, 'fontsize', 12);
 title('Cumulative cases for all ages')
+set(gca, 'fontsize', 15);
 
 saveas(gca, sprintf('%s/cumul_confirmed_all_age.eps', results_path), 'epsc');
 
@@ -95,7 +95,7 @@ for i = 1:size(contact_, 1)
     hold off;
     legend('Model', 'Data')
     sgtitle(ages{i})
-    set(gca, 'fontsize', 12);
+    set(gca, 'fontsize', 15);
 end
 title('Daily confirmed cases by age')
 saveas(gca, sprintf('%s/daily_confirmed_by_age.eps', results_path), 'epsc');
@@ -112,7 +112,7 @@ for i = 1:size(contact_, 1)
     ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
-    set(gca, 'fontsize', 12);
+    set(gca, 'fontsize', 15);
 end
 title('Cumulative confirmed cases by age')
 saveas(gca, sprintf('%s/cumul_confirmed_by_age.eps', results_path), 'epsc');
@@ -126,7 +126,7 @@ for i = 1:size(contact_, 1)
     ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
-    set(gca, 'fontsize', 12);
+    set(gca, 'fontsize', 15);
 end
 title('Daily confirmed cases by age')
 saveas(gca, sprintf('%s/daily_deaths_by_age.eps', results_path), 'epsc');
@@ -140,7 +140,7 @@ for i = 1:size(contact_, 1)
     ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
-    set(gca, 'fontsize', 12);
+    set(gca, 'fontsize', 15);
 end
 title('Cumulative confirmed cases by age')
 saveas(gca, sprintf('%s/cumul_deaths_by_age.eps', results_path), 'epsc');
@@ -154,7 +154,7 @@ for i = 1:size(contact_, 1)
     ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
-    set(gca, 'fontsize', 12);
+    set(gca, 'fontsize', 15);
 end
 title('Daily confirmed cases by age')
 saveas(gca, sprintf('%s/daily_severe_by_age.eps', results_path), 'epsc');
@@ -168,7 +168,7 @@ for i = 1:size(contact_, 1)
     ylabel('Cases');
     legend('Model', 'Data')
     sgtitle(ages{i})
-    set(gca, 'fontsize', 12);
+    set(gca, 'fontsize', 15);
 end
 title('Cumulative confirmed cases by age')
 saveas(gca, sprintf('%s/cumul_severe_by_age.eps', results_path), 'epsc');
@@ -182,5 +182,5 @@ hold off;
 xlabel('Date')
 ylabel('R_t')
 title('Time-dependent reproduction number')
-set(gca, 'fontsize', 12);
+set(gca, 'fontsize', 20);
 saveas(gca, sprintf('%s/rep_num.eps', results_path), 'epsc');
