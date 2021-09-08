@@ -55,13 +55,13 @@ for i = 1:length(tspan_)
         % Beta at time t
         beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
         % FOI at time t for I and V
-        FOI_I = (beta_t * I(i, :)')';
+        FOI = (beta_t * I(i, :)')';
         % Current index and next index
         ic = (i-1)/dt_ + j;
         in = ic + 1;
         % Update states
         S(in, :) = S(ic, :) + dt_ * (- FOI_I .* S(ic, :) - num_dose1 .* vac_eff_t(2));
-        E(in, :) = E(ic, :) + dt_ * (FOI_I .* S(ic, :) + vac_1st_fail * FOI_V .* V(ic, :) - kappa_ .* E(ic, :));
+        E(in, :) = E(ic, :) + dt_ * (FOI .* S(ic, :) + vac_1st_fail * FOI .* V(ic, :) - kappa_ .* E(ic, :));
         I(in, :) = I(ic, :) + dt_ * (kappa_ .* E(ic, :) - alpha_ .* I(ic, :));
         H(in, :) = H(ic, :) + dt_ * (alpha_ .* I(ic, :) - gamma_ .* H(ic, :));
         R(in, :) = R(ic, :) + dt_ * (gamma_ .* H(ic, :) + num_dose2 .* vac_eff_t(2));
