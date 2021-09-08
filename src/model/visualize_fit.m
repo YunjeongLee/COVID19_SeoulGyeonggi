@@ -186,3 +186,10 @@ title('Cumulative confirmed cases by age')
 saveas(gca, sprintf('%s/cumul_severe_by_age.eps', results_path), 'epsc');
 
 %% Plot reproduction number
+figure('pos', [10 10 1600 900]);
+plot(date, Rt);
+xlabel('Date')
+ylabel('R_t')
+title('Time-dependent reproduction number')
+set(gca, 'fontsize', 12);
+saveas(gca, sprintf('%s/rep_num.eps', results_path), 'epsc');
