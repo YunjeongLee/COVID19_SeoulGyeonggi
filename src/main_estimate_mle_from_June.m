@@ -21,7 +21,7 @@ params = {% Parameters to be estimated
           'delta', 1, false, '$\delta$';
           % Initial state, time stamp and contact matrix
           'y0', y01, false, '$y_0$';
-          'tspan', tspan1, false, 'time stamp';
+          'tspan', tspan, false, 'time stamp';
           'dt', 0.001, false, '$\Delta t$';
           'contact', contact, false, 'contact';
           % Epidemiological parameters (fixed)
