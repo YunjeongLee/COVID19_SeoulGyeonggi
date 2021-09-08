@@ -35,6 +35,8 @@ for i = 1:length(tspan_)
     % Number of doses for 1st and 2nd vaccination at time t
     num_dose1 = vac_1st_(i, :);
     num_dose2 = vac_2nd_(i, :);
+    % Vaccine efficacy at time t
+    vac_eff_t = vac_eff_(i, :);
     for j = 1:1/dt_
         % Time stamp
         t = t + dt_;
