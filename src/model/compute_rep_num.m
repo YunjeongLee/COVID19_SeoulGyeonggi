@@ -19,7 +19,7 @@ V = sol(:, 5*num_grp+1:end);
 %% Compute time-dependent reproduction number
 Rt = zeros(length(tspan_)/dt_+1, 1);
 t = 0;
-for i = 1:length(tspan_)-1
+for i = 1:length(tspan_)
     % Vaccine efficacy at time t
     vac_eff_t = vac_eff_(i, :);
     if vac_eff_t(2) == 0
