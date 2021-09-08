@@ -131,6 +131,9 @@ for i = 1:size(vaccine_before_0628, 1)
     % Change into 10 year interval
     temp = [temp(1), temp(2:2:end-1) + temp(3:2:end-1), temp(end)];
     
+    % Compute ratio
+    temp = temp/sum(temp);
+    
     % Add new row to vaccine_2nd
     vaccine_2nd = [vaccine_2nd; repmat(temp, num_to_repeat, 1)];
 end
