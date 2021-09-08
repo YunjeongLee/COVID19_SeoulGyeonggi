@@ -32,6 +32,7 @@ I(1, :) = y0_(2*num_grp+1:3*num_grp); H(1, :) = y0_(3*num_grp+1:4*num_grp);
 R(1, :) = y0_(4*num_grp+1:5*num_grp); V(1, :) = zeros(1, num_grp);
 t = 0;
 for i = 1:length(tspan_)
+    % Number of doses for 1st and 2nd vaccination at time t
     num_dose1 = vac_1st_(i, :);
     num_dose2 = vac_2nd_(i, :);
     for j = 1:1/dt_
