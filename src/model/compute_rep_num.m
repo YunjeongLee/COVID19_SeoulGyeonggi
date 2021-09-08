@@ -20,6 +20,13 @@ V = sol(:, 5*num_grp:end);
 Rt = zeros(length(tspan_)/dt_, 1);
 t = 0;
 for i = 1:length(tspan_)-1
+    % Vaccine efficacy at time t
+    vac_eff_t = vac_eff_(i, :);
+    if vac_eff_t(2) == 0
+        vac_1st_fail = 0;
+    else
+        vac_1st_fail = (1 - vac_eff_t(1))/vac_eff_t(2);
+    end
     for j = 1:1/dt_
     % Time stamp
     t = t + dt_;
