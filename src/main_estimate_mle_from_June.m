@@ -4,6 +4,9 @@ clear; close all; clc;
 restoredefaultpath
 addpath 'model' 'optimizer' 'estimator' 'documentation' 'etc'
 
+%% Load estimate of beta
+load('../results/estimate_before_June/result.mat', 'theta_mle')
+
 %% Load data
 [data, date, delta_prop, contact, init_beta, y01, ...
     vaccine_1st, vaccine_2nd, vaccine_eff, cfr, severe] = load_data();
