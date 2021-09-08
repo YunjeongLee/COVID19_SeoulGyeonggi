@@ -41,7 +41,7 @@ for i = 1:length(tspan_)-1
     St = S(i, :);
     Vt = V(i, :);
     % Beta at time t
-    beta_t = beta_ .* contact_ .* delta_effect(t, delta_prop_, delta_) .* social_distance(t);
+    beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
     % Compute F
     F = [zeros(num_grp), beta_t .* (St' + (1-vac_eff_t(1))/vac_eff_t(2) * Vt'), zeros(num_grp); ...
         zeros(2*num_grp, 3*num_grp)];
