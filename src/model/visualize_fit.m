@@ -172,7 +172,7 @@ saveas(gca, sprintf('%s/cumul_severe_by_age.eps', results_path), 'epsc');
 %% Plot reproduction number
 figure('pos', [10 10 1600 900]);
 hold on;
-plot(date, Rt(1:1/dt_:end-1), 'linewidth', 2);
+plot(date, Rt(1:1/dt_:end), 'linewidth', 2);
 yline(1, '-k');
 hold off;
 xlabel('Date')
