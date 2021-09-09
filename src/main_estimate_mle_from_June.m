@@ -42,7 +42,7 @@ isEstimated = cell2mat(params(:, 3));
 theta0 = cell2mat(params(isEstimated, 2));
 cost0 = cost_mle_covid19(data, params, theta0);
 
-lb = zeros(length(theta0), 1);
+lb = 1;
 ub = inf * ones(length(theta0), 1);
 
 [theta_mle, cost_mle, time_mle] = estimator_gls(data, @cost_mle_covid19, @cost_mle_covid19, params, theta0, 10, 1e-3, lb, ub);
