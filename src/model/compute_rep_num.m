@@ -32,7 +32,7 @@ for i = 1:length(tspan_)
     if delta_prop_t == 0
         delta_effect_t = 1;
     else
-        delta_effect_t = delta_prop_t * delta_;
+        delta_effect_t = 1 - delta_prop_t + delta_prop_t * delta_;
     end
     for j = 1:1/dt_
         % Time stamp
