@@ -49,7 +49,7 @@ title('Severe')
 set(gca, 'fontsize', 15);
 sgtitle('Daily incident cases for all ages', 'fontsize', 20)
 
-saveas(gca, sprintf('%s/daily_confirmed_all_age.eps', results_path), 'epsc');
+saveas(gca, sprintf('%s/daily_all_age.eps', results_path), 'epsc');
 
 %% Visualize cumulative confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
@@ -81,7 +81,7 @@ title('Severe')
 set(gca, 'fontsize', 15);
 sgtitle('Cumulative cases for all ages', 'fontsize', 20)
 
-saveas(gca, sprintf('%s/cumul_confirmed_all_age.eps', results_path), 'epsc');
+saveas(gca, sprintf('%s/cumul_all_age.eps', results_path), 'epsc');
 
 %% Visualize daily confirmed cases, deaths, and severe by age
 ages = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
