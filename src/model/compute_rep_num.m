@@ -38,7 +38,7 @@ for i = 1:length(tspan_)
         % Time stamp
         t = t + dt_;
         % Current index
-        ic = (i-1)/dt_ + j;
+        ic = (i-1)/dt_ + j + 1;
         % S and V at time t
         St = S(ic, :);
         Vt = V(ic, :);
