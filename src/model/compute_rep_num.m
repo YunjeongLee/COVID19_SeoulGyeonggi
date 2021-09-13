@@ -38,7 +38,7 @@ for i = 1:length(tspan_)
     end
     for j = 1:1/dt_
         % Current index
-        ic = (i-1)/dt_ + j + 1;
+        ic = (i-1)/dt_ + j;
         % S and V at time t
         St = S(ic, :);
         Vt = V(ic, :);
