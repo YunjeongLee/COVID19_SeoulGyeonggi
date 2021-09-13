@@ -78,7 +78,7 @@ end
 
 %% 2021/05/02 to 2021/08/31 (1st dose)
 filename = "../data/vaccine/vaccination_12dose_05030830.xlsx";
-vaccine_after_0503 = readmatrix(filename, 'sheet', '1st dose', 'range', 'B2:H19');
+vaccine_after_0503 = readmatrix(filename, 'sheet', '1st dose', 'range', 'B2:H21');
 
 % Change into weekly incident vaccination
 vaccine_after_0503 = vaccine_after_0503(2:end, :) - vaccine_after_0503(1:end-1, :);
@@ -140,7 +140,7 @@ end
 
 %% 2021/06/29 to 2021/08/31 (2nd dose)
 filename = "../data/vaccine/vaccination_12dose_05030830.xlsx";
-vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:H19');
+vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:H21');
 
 % Change into weekly incident vaccination
 vaccine_after_0503 = vaccine_after_0503(2:end, :) - vaccine_after_0503(1:end-1, :);
