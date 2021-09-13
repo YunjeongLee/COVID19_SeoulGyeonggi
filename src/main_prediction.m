@@ -51,4 +51,4 @@ params = {% Parameters to be estimated
           'sd_2nd', sd_1st_val * sd_2nd_val, false, '2nd social distancing effect'};
         
 %% Visualize prediction
-visualize_pred(params, theta_mle, date, cfr, severe, results_path);
+visualize_pred(data, params, theta_mle, date, cfr, severe, results_path);
