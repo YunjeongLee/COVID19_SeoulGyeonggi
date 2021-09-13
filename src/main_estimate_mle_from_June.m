@@ -23,6 +23,8 @@ tspan = 0:size(data, 1)-1;
 sd_1st_val = [1.8322, 1.8322/2];
 sd_2nd_val = [0.699 * 0.35, 0.699, 0.35];
 
+for i = 1:length(sd_1st_val)
+    for j = 1:length(sd_2nd_val)
 params = {% Parameters to be estimated
           'beta', theta_mle, false, '$\beta_1';
           'delta', 7, true, '$\delta$';
@@ -68,3 +70,5 @@ visualize_fit(data, params, theta_mle, date, cfr, severe, results_path);
 
 %% Save all variables
 save(sprintf('%s/result.mat', results_path))
+    end
+end
