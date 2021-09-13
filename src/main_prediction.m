@@ -12,7 +12,7 @@ load('../results/estimate_before_June/result.mat', 'theta_mle')
 beta = theta_mle;
 
 %% Load estimate of delta
-results_path = '../results/estimate_sd_1st_2_2nd_2';
+results_path = '../results/estimate_sd_1st_2_2nd_4';
 load(sprintf('%s/result.mat', results_path), 'theta_mle')
 
 %% Generate date and update params
