@@ -12,6 +12,7 @@ vac_eff_ = parameter.vac_eff;
 dt_ = parameter.dt;
 sd_1st_ = parameter.sd_1st;
 sd_2nd_ = parameter.sd_2nd;
+sd_3rd_ = parameter.sd_3rd;
 
 %% Find S and V
 num_grp = size(contact_, 1);
