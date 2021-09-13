@@ -165,6 +165,14 @@ end
 % Add vaccination rate for 0-9 and 10-19
 vaccine_2nd = [zeros(size(vaccine_2nd, 1), 2), vaccine_2nd];
 
+%% 2021/10/12 to 2021/12/31 (2nd dose)
+% Get 1st dose ratio by age on 2021/09/13
+temp = vaccine_1st(end, :);
+
+% Paste in vaccine_2nd (from 2021/10/12 to 2021/12/3);
+num_to_repeat = 116-35;
+vaccine_2nd = [vaccine_2nd; repmat(temp, num_to_repeat, 1)];
+
 %% Generate csv file
 rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 12, 31, 'format', 'yyyy/MM/dd'));
 varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
