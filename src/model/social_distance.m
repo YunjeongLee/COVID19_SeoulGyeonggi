@@ -5,5 +5,7 @@ elseif (t >= 136) && (t < 147)
     val = sd_1st;
 elseif (t >= 147) && (t < 224)
     val = sd_2nd;
+else
+    val = sd_3rd;
 end
 end
