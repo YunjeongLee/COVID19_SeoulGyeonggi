@@ -22,7 +22,11 @@ Rt = compute_rep_num(parameter, sol);
 %% Visualize daily confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
+hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
+plot(date(1:length(data)), sum(data, 2), ':*');
+hold off;
+legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
@@ -30,6 +34,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, sum(daily_deaths, 2), 'linewidth', 2);
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Deaths')
@@ -37,6 +42,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, sum(daily_severe, 2), 'linewidth', 2);
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Severe')
@@ -48,7 +54,11 @@ saveas(gca, sprintf('%s/daily_all_age_pred.eps', results_path), 'epsc');
 %% Visualize cumulative confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
+hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
+plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
+hold off;
+legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
@@ -56,6 +66,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, cumsum(sum(daily_deaths, 2)), 'linewidth', 2);
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Deaths')
@@ -63,6 +74,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Severe')
