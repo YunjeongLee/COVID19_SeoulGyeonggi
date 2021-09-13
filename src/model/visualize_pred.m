@@ -24,7 +24,7 @@ figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
 hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
-plot(date(1:length(data)), sum(data, 2), ':*');
+plot(date(1:length(data)), sum(data, 2), ':*', 'markersize', 1.5);
 hold off;
 legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
@@ -56,7 +56,7 @@ figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
 hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
-plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
+plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2, 'markersize', 1.5);
 hold off;
 legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
