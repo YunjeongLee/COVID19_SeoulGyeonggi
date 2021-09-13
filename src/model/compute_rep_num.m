@@ -17,7 +17,7 @@ S = sol(:, 1:num_grp);
 V = sol(:, 5*num_grp+1:end);
 
 %% Compute time-dependent reproduction number
-Rt = zeros(length(tspan_)/dt_+1, 1);
+Rt = zeros(length(tspan_)/dt_, 1);
 t = 0;
 for i = 1:length(tspan_)
     % Vaccine efficacy at time t
@@ -32,13 +32,13 @@ for i = 1:length(tspan_)
     if delta_prop_t == 0
         delta_effect_t = 1;
     else
-        delta_effect_t = delta_prop_t * delta_;
+        delta_effect_t = 1 - delta_prop_t + delta_prop_t * delta_;
     end
     for j = 1:1/dt_
         % Time stamp
         t = t + dt_;
         % Current index
-        ic = (i-1)/dt_ + j;
+        ic = (i-1)/dt_ + j + 1;
         % S and V at time t
         St = S(ic, :);
         Vt = V(ic, :);

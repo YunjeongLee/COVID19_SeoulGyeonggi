@@ -47,18 +47,18 @@ for i = 1:length(tspan_)
     if delta_prop_t == 0
         delta_effect_t = 1;
     else
-        delta_effect_t = delta_prop_t * delta_;
+        delta_effect_t = 1 - delta_prop_t + delta_prop_t * delta_;
     end
     for j = 1:1/dt_
         % Time stamp
         t = t + dt_;
         % Beta at time t
         beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
-        % FOI at time t for I and V
-        FOI = (beta_t * I(i, :)')';
         % Current index and next index
         ic = (i-1)/dt_ + j;
         in = ic + 1;
+        % FOI at time t for I and V
+        FOI = (beta_t * I(ic, :)')';
         % Update states
         S(in, :) = S(ic, :) + dt_ * (- FOI .* S(ic, :) - num_dose1 .* vac_eff_t(2));
         E(in, :) = E(ic, :) + dt_ * (FOI .* S(ic, :) + vac_1st_fail * FOI .* V(ic, :) - kappa_ .* E(ic, :));

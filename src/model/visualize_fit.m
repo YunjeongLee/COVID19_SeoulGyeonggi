@@ -26,7 +26,7 @@ hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
 plot(date, sum(data, 2), ':*');
 hold off;
-legend('Model', 'Data')
+legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
@@ -34,7 +34,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, sum(daily_deaths, 2), 'linewidth', 2);
-legend('Model')
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Deaths')
@@ -42,23 +42,23 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, sum(daily_severe, 2), 'linewidth', 2);
-legend('Model')
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Severe')
 set(gca, 'fontsize', 15);
-sgtitle('Daily severe cases for all ages', 'fontsize', 20)
+sgtitle('Daily incident cases for all ages', 'fontsize', 20)
 
-saveas(gca, sprintf('%s/daily_confirmed_all_age.eps', results_path), 'epsc');
+saveas(gca, sprintf('%s/daily_all_age.eps', results_path), 'epsc');
 
 %% Visualize cumulative confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
 hold on;
-plot(date, cumsum(sum(daily_confirmed, 2)));
+plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
 plot(date, cumsum(sum(data, 2)), ':*', 'linewidth', 2);
 hold off;
-legend('Model', 'Data')
+legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
@@ -66,7 +66,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, cumsum(sum(daily_deaths, 2)), 'linewidth', 2);
-legend('Model')
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Deaths')
@@ -74,14 +74,14 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
-legend('Model')
+legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Severe')
 set(gca, 'fontsize', 15);
 sgtitle('Cumulative cases for all ages', 'fontsize', 20)
 
-saveas(gca, sprintf('%s/cumul_confirmed_all_age.eps', results_path), 'epsc');
+saveas(gca, sprintf('%s/cumul_all_age.eps', results_path), 'epsc');
 
 %% Visualize daily confirmed cases, deaths, and severe by age
 ages = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
@@ -93,7 +93,7 @@ for i = 1:size(contact_, 1)
     plot(date, daily_confirmed(:, i), 'linewidth', 1.5);
     plot(date, data(:, i), ':*', 'markersize', 1.5);
     hold off;
-    legend('Model', 'Data')
+    legend('Model', 'Data', 'location', 'northwest')
     title(ages{i})
     set(gca, 'fontsize', 15);
 end
@@ -110,7 +110,7 @@ for i = 1:size(contact_, 1)
     hold off;
     xlabel('Date');
     ylabel('Cases');
-    legend('Model', 'Data')
+    legend('Model', 'Data', 'location', 'northwest')
     title(ages{i})
     set(gca, 'fontsize', 15);
 end
@@ -172,12 +172,12 @@ saveas(gca, sprintf('%s/cumul_severe_by_age.eps', results_path), 'epsc');
 %% Plot reproduction number
 figure('pos', [10 10 1600 900]);
 hold on;
-plot(date, Rt(2:1/dt_:end), 'linewidth', 2);
+plot(date, Rt(1:1/dt_:end), 'linewidth', 2);
 yline(1, '-k');
 hold off;
 xlabel('Date')
 ylabel('R_t')
-ylim([0, 1.6])
+ylim([0, 4])
 title('Time-dependent reproduction number')
 set(gca, 'fontsize', 20);
 saveas(gca, sprintf('%s/rep_num.eps', results_path), 'epsc');

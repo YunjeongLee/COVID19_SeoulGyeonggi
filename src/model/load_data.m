@@ -31,8 +31,8 @@ filename = '../data/vaccine/2nd_dose_ratio_by_age.csv';
 vaccine_2nd = readmatrix(filename, 'range', 'B2:J199');
 
 %% Compute the vaccination number by age
-vaccine_1st = round(vaccine_number(:, 1) .* vaccine_1st);
-vaccine_2nd = round(vaccine_number(:, 2) .* vaccine_2nd);
+vaccine_1st = vaccine_number(:, 1) .* vaccine_1st;
+vaccine_2nd = vaccine_number(:, 2) .* vaccine_2nd;
 
 % Add two weeks in front of 2021/02/15
 vaccine_1st = [zeros(14, size(vaccine_1st, 2)); vaccine_1st];
