@@ -52,7 +52,10 @@ params = {% Parameters to be estimated
           'vac_eff', vaccine_eff, false, 'vaccine efficacy';
           % Social distancing effect
           'sd_1st', sd_1st_val, false, '1st social distancing effect';
-          'sd_2nd', sd_1st_val * sd_2nd_val, false, '2nd social distancing effect'};
+          'sd_2nd', sd_1st_val * sd_2nd_val, false, '2nd social distancing effect';
+          'sd_3rd', sd_1st_val * sd_3rd_val(i), false, '3rd social distancing effect';
+          % School effect
+          'school', school(j), false, 'School effect'};
         
 %% Visualize prediction
 visualize_pred(data, params, theta_mle, date, cfr, severe, results_path);
