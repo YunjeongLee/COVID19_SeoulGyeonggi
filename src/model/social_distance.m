@@ -4,6 +4,6 @@ if t < 136
 elseif (t >= 136) && (t < 147)
     val = sd_1st;
 elseif (t >= 147)
-    val = 1.685 * 0.67 * 0.33;
+    val = sd_2nd;
 end
 end
