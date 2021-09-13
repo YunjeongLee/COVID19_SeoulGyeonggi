@@ -18,6 +18,10 @@ data1 = data(1:106, :);
 tspan1 = 0:size(data1, 1)-1;
 date1 = date(1:106, :);
 
+% Social distancing effect
+sd_1st = 1.8322;
+sd_2nd = sd_1st * 0.699 * 0.35;
+
 params = {% Parameters to be estimated
           'beta', init_beta, true, '$\beta_1';
           'delta', 1, false, '$\delta$';
@@ -34,7 +38,10 @@ params = {% Parameters to be estimated
           % Vaccination (fixed)
           'vac_1st', vaccine_1st, false, '1st dose';
           'vac_2nd', vaccine_2nd, false, '2nd dose';
-          'vac_eff', vaccine_eff, false, 'vaccine efficacy'};
+          'vac_eff', vaccine_eff, false, 'vaccine efficacy';
+          % Social distancing effect
+          'sd_1st', sd_1st, false, '1st social distancing effect';
+          'sd_2nd', sd_2nd, false, '2nd social distancing effect'};
 
 %% Parameter estimation (2021/02/15 ~ 2021/05/31)
 isEstimated = cell2mat(params(:, 3));

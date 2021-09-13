@@ -10,6 +10,8 @@ delta_prop_ = parameter.delta_prop;
 delta_ = parameter.delta;
 vac_eff_ = parameter.vac_eff;
 dt_ = parameter.dt;
+sd_1st_ = parameter.sd_1st;
+sd_2nd_ = parameter.sd_2nd;
 
 %% Find S and V
 num_grp = size(contact_, 1);
@@ -35,15 +37,13 @@ for i = 1:length(tspan_)
         delta_effect_t = 1 - delta_prop_t + delta_prop_t * delta_;
     end
     for j = 1:1/dt_
-        % Time stamp
-        t = t + dt_;
         % Current index
-        ic = (i-1)/dt_ + j + 1;
+        ic = (i-1)/dt_ + j;
         % S and V at time t
         St = S(ic, :);
         Vt = V(ic, :);
         % Beta at time t
-        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
+        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_);
         % Compute F
         F0 = [zeros(num_grp), beta_t .* (St' + vac_1st_fail * Vt'), zeros(num_grp); ...
             zeros(2*num_grp, 3*num_grp)];
@@ -52,6 +52,8 @@ for i = 1:length(tspan_)
             zeros(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
         % Compute reproduction number at time t
         Rt(ic) = max(abs(eig(F0/V0)));
+        % Time stamp
+        t = t + dt_;
     end
 end
 end

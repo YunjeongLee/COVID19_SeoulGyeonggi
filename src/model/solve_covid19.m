@@ -13,6 +13,8 @@ vac_1st_ = parameter.vac_1st;
 vac_2nd_ = parameter.vac_2nd;
 vac_eff_ = parameter.vac_eff;
 dt_ = parameter.dt;
+sd_1st_ = parameter.sd_1st;
+sd_2nd_ = parameter.sd_2nd;
 
 %% Solve model using difference equation
 % Define the number of groups
@@ -53,7 +55,7 @@ for i = 1:length(tspan_)
         % Time stamp
         t = t + dt_;
         % Beta at time t
-        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
+        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_);
         % Current index and next index
         ic = (i-1)/dt_ + j;
         in = ic + 1;
