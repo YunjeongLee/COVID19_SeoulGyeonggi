@@ -76,7 +76,7 @@ for i = 1:5
     vaccine_2nd = [vaccine_2nd; repmat(temp, 7, 1)];
 end
 
-%% 2021/05/02 to 2021/08/31 (1st dose)
+%% 2021/05/02 to 2021/12/31 (1st dose)
 filename = "../data/vaccine/vaccination_12dose_05030913.xlsx";
 vaccine_after_0503 = readmatrix(filename, 'sheet', '1st dose', 'range', 'B2:H21');
 
@@ -138,7 +138,7 @@ for i = 1:size(vaccine_before_0628, 1)
     vaccine_2nd = [vaccine_2nd; repmat(temp, num_to_repeat, 1)];
 end
 
-%% 2021/06/29 to 2021/08/31 (2nd dose)
+%% 2021/06/29 to 2021/12/31 (2nd dose)
 filename = "../data/vaccine/vaccination_12dose_05030913.xlsx";
 vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:H21');
 
