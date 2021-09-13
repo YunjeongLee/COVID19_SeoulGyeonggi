@@ -31,6 +31,8 @@ sd_2nd_val = 0.699;
 sd_3rd_val = [0.699, 1];
 school = [1.9195, 2.6593, 3.6844, 7.0721];
 
+for i = 1:length(sd_3rd_val)
+    for j = 1:length(school)
 params = {% Parameters to be estimated
           'beta', beta, false, '$\beta_1';
           'delta', 1, true, '$\delta$';
@@ -54,3 +56,5 @@ params = {% Parameters to be estimated
         
 %% Visualize prediction
 visualize_pred(data, params, theta_mle, date, cfr, severe, results_path);
+    end
+end
