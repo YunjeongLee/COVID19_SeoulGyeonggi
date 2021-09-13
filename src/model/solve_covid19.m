@@ -55,7 +55,7 @@ for i = 1:length(tspan_)
         % Time stamp
         t = t + dt_;
         % Beta at time t
-        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t);
+        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_);
         % Current index and next index
         ic = (i-1)/dt_ + j;
         in = ic + 1;
