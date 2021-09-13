@@ -1,4 +1,4 @@
-function [delta_prop, contact, init_beta, y0, vaccine_1st, vaccine_2nd, vaccine_eff, cfr, severe] = load_data_pred()
+function [data, delta_prop, contact, init_beta, y0, vaccine_1st, vaccine_2nd, vaccine_eff, cfr, severe] = load_data_pred()
 %% Load alpha and delta proportion
 filename = '../data/covid19/alpha_delta_effect.xlsx';
 delta_prop = readmatrix(filename, 'range', 'C2:C321');
