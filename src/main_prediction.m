@@ -5,7 +5,7 @@ restoredefaultpath
 addpath 'model' 'optimizer' 'estimator' 'documentation' 'etc'
 
 %% Load data
-[delta_prop, contact, init_beta, y0, vaccine_1st, vaccine_2nd, vaccine_eff, cfr, severe] = load_data_pred();
+[data, delta_prop, contact, init_beta, y0, vaccine_1st, vaccine_2nd, vaccine_eff, cfr, severe] = load_data_pred();
 
 %% Load estimate of beta
 load('../results/estimate_before_June/result.mat', 'theta_mle')
