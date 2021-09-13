@@ -25,50 +25,50 @@ sd_2nd_val = [0.699 * 0.35, 0.699, 0.35];
 
 for i = 1:length(sd_1st_val)
     for j = 1:length(sd_2nd_val)
-params = {% Parameters to be estimated
-          'beta', theta_mle, false, '$\beta_1';
-          'delta', 7, true, '$\delta$';
-          % Initial state, time stamp and contact matrix
-          'y0', y01, false, '$y_0$';
-          'tspan', tspan, false, 'time stamp';
-          'dt', 0.001, false, '$\Delta t$';
-          'contact', contact, false, 'contact';
-          % Epidemiological parameters (fixed)
-          'kappa', kappa, false, '$\kappa$';
-          'alpha', alpha, false, '$\alpha$';
-          'gamma', gamma, false, '$\gamma$';
-          'delta_prop', delta_prop, false, '$\delta$ proportion';
-          % Vaccination (fixed)
-          'vac_1st', vaccine_1st, false, '1st dose';
-          'vac_2nd', vaccine_2nd, false, '2nd dose';
-          'vac_eff', vaccine_eff, false, 'vaccine efficacy';
-          % Social distancing effect
-          'sd_1st', sd_1st_val(i), false, '1st social distancing effect';
-          'sd_2nd', sd_1st_val(i) * sd_2nd_val(j), false, '2nd social distancing effect'};
-
-%% Parameter estimation (2021/02/15 ~ 2021/05/31)
-isEstimated = cell2mat(params(:, 3));
-theta0 = cell2mat(params(isEstimated, 2));
-cost0 = cost_mle_covid19(data, params, theta0);
-
-lb = 1;
-ub = inf * ones(length(theta0), 1);
-
-[theta_mle, cost_mle, time_mle] = estimator_gls(data, @cost_mle_covid19, @cost_mle_covid19, params, theta0, 10, 1e-3, lb, ub);
-
-%% Generate params table
-results_path = sprintf('../results/estimate_sd_1st_%d_2nd_%d', i, j);
-mkdir(results_path);
-
-ROW = params(isEstimated, 4); ROW{end+1} = 'Cost'; ROW{end+1} = 'Time';
-mle_table = table([theta0; cost0; 0], [theta_mle; cost_mle; time_mle], 'RowNames', ROW, 'VariableNames', {'Initial', 'Estimate'})
-lt = table2latex(mle_table, {'%.4e', 2});
-save_document(lt, sprintf('%s/result.tex', results_path))
-
-%% Generate figure
-visualize_fit(data, params, theta_mle, date, cfr, severe, results_path);
-
-%% Save all variables
-save(sprintf('%s/result.mat', results_path))
+        params = {% Parameters to be estimated
+            'beta', theta_mle, false, '$\beta_1';
+            'delta', 7, true, '$\delta$';
+            % Initial state, time stamp and contact matrix
+            'y0', y01, false, '$y_0$';
+            'tspan', tspan, false, 'time stamp';
+            'dt', 0.001, false, '$\Delta t$';
+            'contact', contact, false, 'contact';
+            % Epidemiological parameters (fixed)
+            'kappa', kappa, false, '$\kappa$';
+            'alpha', alpha, false, '$\alpha$';
+            'gamma', gamma, false, '$\gamma$';
+            'delta_prop', delta_prop, false, '$\delta$ proportion';
+            % Vaccination (fixed)
+            'vac_1st', vaccine_1st, false, '1st dose';
+            'vac_2nd', vaccine_2nd, false, '2nd dose';
+            'vac_eff', vaccine_eff, false, 'vaccine efficacy';
+            % Social distancing effect
+            'sd_1st', sd_1st_val(i), false, '1st social distancing effect';
+            'sd_2nd', sd_1st_val(i) * sd_2nd_val(j), false, '2nd social distancing effect'};
+        
+        %% Parameter estimation (2021/02/15 ~ 2021/05/31)
+        isEstimated = cell2mat(params(:, 3));
+        theta0 = cell2mat(params(isEstimated, 2));
+        cost0 = cost_mle_covid19(data, params, theta0);
+        
+        lb = 1;
+        ub = inf * ones(length(theta0), 1);
+        
+        [theta_mle, cost_mle, time_mle] = estimator_gls(data, @cost_mle_covid19, @cost_mle_covid19, params, theta0, 10, 1e-3, lb, ub);
+        
+        %% Generate params table
+        results_path = sprintf('../results/estimate_sd_1st_%d_2nd_%d', i, j);
+        mkdir(results_path);
+        
+        ROW = params(isEstimated, 4); ROW{end+1} = 'Cost'; ROW{end+1} = 'Time';
+        mle_table = table([theta0; cost0; 0], [theta_mle; cost_mle; time_mle], 'RowNames', ROW, 'VariableNames', {'Initial', 'Estimate'})
+        lt = table2latex(mle_table, {'%.4e', 2});
+        save_document(lt, sprintf('%s/result.tex', results_path))
+        
+        %% Generate figure
+        visualize_fit(data, params, theta_mle, date, cfr, severe, results_path);
+        
+        %% Save all variables
+        save(sprintf('%s/result.mat', results_path))
     end
 end
