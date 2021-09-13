@@ -1,4 +1,4 @@
-function [] = visualize_fit(data, params, theta, date, cfr, severe, results_path)
+function [] = visualize_pred(data, params, theta, date, cfr, severe, results_path)
 %% Assign Parameters
 names = params(:, 1);
 isEstimated = cell2mat(params(:, 3));
