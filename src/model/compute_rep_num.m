@@ -37,8 +37,6 @@ for i = 1:length(tspan_)
         delta_effect_t = 1 - delta_prop_t + delta_prop_t * delta_;
     end
     for j = 1:1/dt_
-        % Time stamp
-        t = t + dt_;
         % Current index
         ic = (i-1)/dt_ + j + 1;
         % S and V at time t
@@ -54,6 +52,8 @@ for i = 1:length(tspan_)
             zeros(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
         % Compute reproduction number at time t
         Rt(ic) = max(abs(eig(F0/V0)));
+        % Time stamp
+        t = t + dt_;
     end
 end
 end
