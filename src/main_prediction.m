@@ -27,7 +27,7 @@ tspan = 0:length(date)-1;
 
 % Social distancing effect
 sd_1st_val = 1 + 0.8322/2;
-sd_2nd_val = 0.699;
+sd_2nd_val = (0.699+0.35)/2;
 
 params = {% Parameters to be estimated
           'beta', beta, false, '$\beta_1';
