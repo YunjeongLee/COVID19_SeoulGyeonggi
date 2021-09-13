@@ -42,6 +42,8 @@ for i = 1:length(tspan_)
         % S and V at time t
         St = S(ic, :);
         Vt = V(ic, :);
+        % School effect
+        contact_(2, 2) = contact_(2, 2) .* school_effect(t, school_);
         % Beta at time t
         beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_);
         % Compute F

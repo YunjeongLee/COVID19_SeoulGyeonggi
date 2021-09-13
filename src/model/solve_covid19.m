@@ -54,6 +54,8 @@ for i = 1:length(tspan_)
     for j = 1:1/dt_
         % Time stamp
         t = t + dt_;
+        % School effect
+        contact_(2, 2) = contact_(2, 2) .* school_effect(t, school_);
         % Beta at time t
         beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_);
         % Current index and next index
