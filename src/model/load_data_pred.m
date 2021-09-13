@@ -1,4 +1,9 @@
 function [data, delta_prop, contact, init_beta, y0, vaccine_1st, vaccine_2nd, vaccine_eff, cfr, severe] = load_data_pred()
+%% Load daily incident confirmed data
+filename = '../data/covid19/daily_confirmed_total.csv';
+T_data = readtable(filename, 'PreserveVariableNames', true, 'ReadRowNames', true);
+data = T_data.Variables;
+
 %% Load alpha and delta proportion
 filename = '../data/covid19/alpha_delta_effect.xlsx';
 delta_prop = readmatrix(filename, 'range', 'C2:C321');
