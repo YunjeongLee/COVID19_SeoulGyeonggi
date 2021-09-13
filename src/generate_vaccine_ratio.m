@@ -76,9 +76,9 @@ for i = 1:5
     vaccine_2nd = [vaccine_2nd; repmat(temp, 7, 1)];
 end
 
-%% 2021/05/02 to 2021/08/31 (1st dose)
-filename = "../data/vaccine/vaccination_12dose_05030830.xlsx";
-vaccine_after_0503 = readmatrix(filename, 'sheet', '1st dose', 'range', 'B2:H19');
+%% 2021/05/02 to 2021/12/31 (1st dose)
+filename = "../data/vaccine/vaccination_12dose_05030913.xlsx";
+vaccine_after_0503 = readmatrix(filename, 'sheet', '1st dose', 'range', 'B2:H21');
 
 % Change into weekly incident vaccination
 vaccine_after_0503 = vaccine_after_0503(2:end, :) - vaccine_after_0503(1:end-1, :);
@@ -91,7 +91,7 @@ for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 9;
     elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 8;
+        num_to_repeat = 116;
     else
         num_to_repeat = 7;
     end
@@ -138,9 +138,9 @@ for i = 1:size(vaccine_before_0628, 1)
     vaccine_2nd = [vaccine_2nd; repmat(temp, num_to_repeat, 1)];
 end
 
-%% 2021/06/29 to 2021/08/31 (2nd dose)
-filename = "../data/vaccine/vaccination_12dose_05030830.xlsx";
-vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:H19');
+%% 2021/06/29 to 2021/10/11 (2nd dose)
+filename = "../data/vaccine/vaccination_12dose_05030913.xlsx";
+vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:H21');
 
 % Change into weekly incident vaccination
 vaccine_after_0503 = vaccine_after_0503(2:end, :) - vaccine_after_0503(1:end-1, :);
@@ -153,7 +153,7 @@ for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 14;
     elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 8;
+        num_to_repeat = 35;
     else
         num_to_repeat = 7;
     end
@@ -165,8 +165,16 @@ end
 % Add vaccination rate for 0-9 and 10-19
 vaccine_2nd = [zeros(size(vaccine_2nd, 1), 2), vaccine_2nd];
 
+%% 2021/10/12 to 2021/12/31 (2nd dose)
+% Get 1st dose ratio by age on 2021/09/13
+temp = vaccine_1st(end, :);
+
+% Paste in vaccine_2nd (from 2021/10/12 to 2021/12/3);
+num_to_repeat = 116-35;
+vaccine_2nd = [vaccine_2nd; repmat(temp, num_to_repeat, 1)];
+
 %% Generate csv file
-rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 8, 31, 'format', 'yyyy/MM/dd'));
+rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 12, 31, 'format', 'yyyy/MM/dd'));
 varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
 
 % Add zeros in front of 2021/02/26
