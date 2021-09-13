@@ -1,9 +1,3 @@
-%% Load daily incident confirmed data
-filename = '../data/covid19/daily_confirmed_total.csv';
-T_data = readtable(filename, 'PreserveVariableNames', true, 'ReadRowNames', true);
-date = datetime(T_data.Properties.RowNames, 'format', 'yyyy/MM/dd');
-data = T_data.Variables;
-
 function [data, date, delta_prop, contact, init_beta, y0, vaccine_1st, vaccine_2nd, vaccine_eff, cfr, severe] = load_data_pred()
 %% Load alpha and delta proportion
 filename = '../data/covid19/alpha_delta_effect.xlsx';
