@@ -29,7 +29,7 @@ tspan = 0:length(date)-1;
 sd_1st_val = 1 + 0.8322/2;
 sd_2nd_val = 0.699;
 sd_3rd_val = [0.699, 1];
-school = [1.9195, 2.6593, 3.6844, 7.0721];
+school = [1, 1.9195, 2.6593, 3.6844, 7.0721];
 
 for i = 1:length(sd_3rd_val)
     for j = 1:length(school)
