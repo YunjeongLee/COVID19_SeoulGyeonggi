@@ -34,7 +34,7 @@ vaccine_2nd = [zeros(14, size(vaccine_2nd, 2)); vaccine_2nd];
 
 %% Load vaccine efficacy
 filename = '../data/vaccine/vaccine_efficacy.xlsx';
-vaccine_eff = readmatrix(filename, 'range', 'B2:C199');
+vaccine_eff = readmatrix(filename, 'range', 'B2:C321');
 
 % Add two weeks in front of 2021/02/15
 vaccine_eff = [zeros(14, size(vaccine_eff, 2)); vaccine_eff];
