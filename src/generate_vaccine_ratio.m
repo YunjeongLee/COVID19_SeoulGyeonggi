@@ -91,7 +91,7 @@ for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 9;
     elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 8;
+        num_to_repeat = 116;
     else
         num_to_repeat = 7;
     end
@@ -153,7 +153,7 @@ for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 14;
     elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 8;
+        num_to_repeat = 116;
     else
         num_to_repeat = 7;
     end
