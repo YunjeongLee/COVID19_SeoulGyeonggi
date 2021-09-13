@@ -19,6 +19,10 @@ gamma = 1/14;
 % Select subset of data (2021/02/15 ~ 2021/05/31, since delta stars from 2021/06/01
 tspan = 0:size(data, 1)-1;
 
+% Social distancing effect
+sd_1st_val = [1.8322, 1.8322/2];
+sd_2nd_val = [0.699 * 0.35, 0.699, 0.35];
+
 params = {% Parameters to be estimated
           'beta', theta_mle, false, '$\beta_1';
           'delta', 7, true, '$\delta$';
