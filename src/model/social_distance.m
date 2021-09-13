@@ -1,4 +1,4 @@
-function val = social_distance(t, sd_1st, sd_2nd)
+function val = social_distance(t, sd_1st, sd_2nd, sd_3rd)
 if t < 136
     val = 1;
 elseif (t >= 136) && (t < 147)
