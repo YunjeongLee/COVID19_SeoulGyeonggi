@@ -33,31 +33,31 @@ school = [1.9195, 2.6593, 3.6844, 7.0721];
 
 for i = 1:length(sd_3rd_val)
     for j = 1:length(school)
-params = {% Parameters to be estimated
-          'beta', beta, false, '$\beta_1';
-          'delta', 1, true, '$\delta$';
-          % Initial state, time stamp and contact matrix
-          'y0', y0, false, '$y_0$';
-          'tspan', tspan, false, 'time stamp';
-          'dt', 0.001, false, '$\Delta t$';
-          'contact', contact, false, 'contact';
-          % Epidemiological parameters (fixed)
-          'kappa', kappa, false, '$\kappa$';
-          'alpha', alpha, false, '$\alpha$';
-          'gamma', gamma, false, '$\gamma$';
-          'delta_prop', delta_prop, false, '$\delta$ proportion';
-          % Vaccination (fixed)
-          'vac_1st', vaccine_1st, false, '1st dose';
-          'vac_2nd', vaccine_2nd, false, '2nd dose';
-          'vac_eff', vaccine_eff, false, 'vaccine efficacy';
-          % Social distancing effect
-          'sd_1st', sd_1st_val, false, '1st social distancing effect';
-          'sd_2nd', sd_1st_val * sd_2nd_val, false, '2nd social distancing effect';
-          'sd_3rd', sd_1st_val * sd_3rd_val(i), false, '3rd social distancing effect';
-          % School effect
-          'school', school(j), false, 'School effect'};
+        params = {% Parameters to be estimated
+                  'beta', beta, false, '$\beta_1';
+                  'delta', 1, true, '$\delta$';
+                  % Initial state, time stamp and contact matrix
+                  'y0', y0, false, '$y_0$';
+                  'tspan', tspan, false, 'time stamp';
+                  'dt', 0.001, false, '$\Delta t$';
+                  'contact', contact, false, 'contact';
+                  % Epidemiological parameters (fixed)
+                  'kappa', kappa, false, '$\kappa$';
+                  'alpha', alpha, false, '$\alpha$';
+                  'gamma', gamma, false, '$\gamma$';
+                  'delta_prop', delta_prop, false, '$\delta$ proportion';
+                  % Vaccination (fixed)
+                  'vac_1st', vaccine_1st, false, '1st dose';
+                  'vac_2nd', vaccine_2nd, false, '2nd dose';
+                  'vac_eff', vaccine_eff, false, 'vaccine efficacy';
+                  % Social distancing effect
+                  'sd_1st', sd_1st_val, false, '1st social distancing effect';
+                  'sd_2nd', sd_1st_val * sd_2nd_val, false, '2nd social distancing effect';
+                  'sd_3rd', sd_1st_val * sd_3rd_val(i), false, '3rd social distancing effect';
+                  % School effect
+                  'school', school(j), false, 'School effect'};
         
-%% Visualize prediction
-visualize_pred(data, params, theta_mle, date, cfr, severe, results_path);
+        %% Visualize prediction
+        visualize_pred(data, params, theta_mle, date, cfr, severe, results_path);
     end
 end
