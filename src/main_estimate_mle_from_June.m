@@ -27,7 +27,7 @@ for i = 1:length(sd_1st_val)
     for j = 1:length(sd_2nd_val)
         params = {% Parameters to be estimated
             'beta', theta_mle, false, '$\beta_1';
-            'delta', 7, true, '$\delta$';
+            'delta', 1, true, '$\delta$';
             % Initial state, time stamp and contact matrix
             'y0', y01, false, '$y_0$';
             'tspan', tspan, false, 'time stamp';
