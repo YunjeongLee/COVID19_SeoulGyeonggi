@@ -35,7 +35,7 @@ for i = 1:length(sd_3rd_val)
     for j = 1:length(school)
         params = {% Parameters to be estimated
                   'beta', beta, false, '$\beta_1';
-                  'delta', 1, true, '$\delta$';
+                  'delta', theta_mle, true, '$\delta$';
                   % Initial state, time stamp and contact matrix
                   'y0', y0, false, '$y_0$';
                   'tspan', tspan, false, 'time stamp';
