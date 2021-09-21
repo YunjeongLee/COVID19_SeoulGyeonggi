@@ -47,6 +47,9 @@ for i = 1:length(tspan_)
         % Beta at time t
         beta_t = beta_ .* contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
         % Compute F
+        F0_elm1 = beta_t .* St';
+        F0_elm2 = (1 - vac_eff_t(1)) * beta_t .* V1t';
+        F0_elm3 = (1 - vac_eff_t(2)) * beta_t .* V2t';
         F0 = [zeros(num_grp), beta_t .* (St' + vac_1st_fail * Vt'), zeros(num_grp); ...
             zeros(2*num_grp, 3*num_grp)];
         V0 = [kappa_ * eye(num_grp), zeros(num_grp, 2*num_grp); ...
