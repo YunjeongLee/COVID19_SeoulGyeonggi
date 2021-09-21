@@ -3,6 +3,7 @@ function val = compute_daily_hospitalized(parameter, sol)
 alpha_ = parameter.alpha;
 dt_ = parameter.dt;
 severe_ = parameter.severe;
+hosp_1st_ = parameter.hosp_1st;
 num_grp = size(parameter.contact, 1);
 I = sol(:, 6*num_grp+1:7*num_grp);
 Iv1 = sol(:, 7*num_grp+1:8*num_grp);
