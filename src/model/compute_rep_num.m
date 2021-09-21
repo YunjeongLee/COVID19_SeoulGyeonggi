@@ -19,6 +19,7 @@ school_ = parameter.school;
 num_grp = size(contact_, 1);
 S = sol(:, 1:num_grp);
 V1 = sol(:, num_grp+1:2*num_grp);
+V2 = sol(:, 2*num_grp+1:3*num_grp);
 
 %% Compute time-dependent reproduction number
 Rt = zeros(length(tspan_)/dt_, 1);
