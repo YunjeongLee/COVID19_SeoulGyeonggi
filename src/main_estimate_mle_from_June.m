@@ -50,7 +50,7 @@ school = 1;
             'hosp_1st', 1-0.75, false, 'hospitalization risk after 1st dose';
             'hosp_2nd', 1-0.94, false, 'hospitalization risk after 2nd dose';
             % Social distancing effect
-            'sd_1st', sd_1st_val(i), false, '1st social distancing effect';
+            'sd_1st', sd_1st_val, false, '1st social distancing effect';
             'sd_2nd', sd_1st_val * sd_2nd_val(j), false, '2nd social distancing effect';
             'sd_3rd', sd_1st_val * sd_2nd_val(j), false, '3rd social distancing effect';
             % School effect
