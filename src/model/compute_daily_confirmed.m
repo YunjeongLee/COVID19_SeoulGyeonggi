@@ -3,7 +3,7 @@ function val = compute_daily_confirmed(parameter, sol)
 alpha_ = parameter.alpha;
 dt_ = parameter.dt;
 num_grp = size(parameter.contact, 1);
-I = sol(:, 2*num_grp+1:3*num_grp);
+I = sol(:, 6*num_grp+1:7*num_grp);
 
 %% Compute daily confirmed cases
 dt_confirmed = alpha_ .* (I(1:end-1, :) + I(2:end, :))/2 * dt_;
