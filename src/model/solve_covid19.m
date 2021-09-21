@@ -85,5 +85,5 @@ for i = 1:length(tspan_)
 end
 
 %% Merge states
-sol = [S, E, I, H, R, V];
+sol = [S, V1, V2, E, Ev1, Ev2, I, Iv1, Iv2, H, R];
 end
