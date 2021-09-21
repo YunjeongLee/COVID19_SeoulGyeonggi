@@ -39,6 +39,8 @@ for i = 1:length(tspan_)
         ic = (i-1)/dt_ + j;
         % S and V at time t
         St = S(ic, :);
+        V1t = V1(ic, :);
+        V2t = V2(ic, :);
         % School effect
         contact_temp = contact_;
         contact_temp(2, 2) = contact_(2, 2) .* school_effect(t, school_);
