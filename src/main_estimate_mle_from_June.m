@@ -80,7 +80,7 @@ for i = 1:length(sd_1st_val)
         save_document(lt, sprintf('%s/result.tex', results_path))
         
         %% Generate figure
-        visualize_fit(data, params, theta_mle, date, cfr, severe, results_path);
+        visualize_fit(data, params, theta_mle, date, results_path);
         
         %% Save all variables
         save(sprintf('%s/result.mat', results_path))
