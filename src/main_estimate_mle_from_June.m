@@ -51,6 +51,11 @@ for i = 1:length(sd_1st_val)
             'sd_1st', sd_1st_val(i), false, '1st social distancing effect';
             'sd_2nd', sd_1st_val(i) * sd_2nd_val(j), false, '2nd social distancing effect';
             'sd_3rd', sd_1st_val(i) * sd_2nd_val(j), false, '3rd social distancing effect';
+            % School effect
+            'school', school, false, 'School effect';
+            % CFR or severeness
+            'cfr', cfr, false, 'case fatality rate';
+            'severe', severe, false, 'severity'};
         
         %% Parameter estimation (2021/02/15 ~ 2021/05/31)
         isEstimated = cell2mat(params(:, 3));
