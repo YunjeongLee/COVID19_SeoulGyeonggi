@@ -23,6 +23,7 @@ tspan = 0:size(data, 1)-1;
 % Social distancing effect
 sd_1st_val = 1 + 0.8322/2;
 sd_2nd_val = [0.699 * 0.35, 0.699, 0.35, (0.699+0.35)/2];
+sd_3rd_val = sd_2nd_val;
 
 for i = 1:length(sd_1st_val)
     for j = 1:length(sd_2nd_val)
