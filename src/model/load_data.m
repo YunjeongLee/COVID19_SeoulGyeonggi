@@ -7,7 +7,7 @@ data = T_data.Variables;
 
 %% Load alpha and delta proportion
 filename = '../data/covid19/alpha_delta_effect.xlsx';
-delta_prop = readmatrix(filename, 'range', 'C2:C200');
+delta_prop = readmatrix(filename, 'range', 'C2:C321');
 
 %% Load contact matrix
 filename = '../data/contact/[2020서울경기]contact_rate_matrix.csv';
