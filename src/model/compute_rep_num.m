@@ -12,6 +12,8 @@ vac_eff_ = parameter.vac_eff;
 dt_ = parameter.dt;
 sd_1st_ = parameter.sd_1st;
 sd_2nd_ = parameter.sd_2nd;
+sd_3rd_ = parameter.sd_3rd;
+school_ = parameter.school;
 
 %% Find S and V
 num_grp = size(contact_, 1);
@@ -42,8 +44,11 @@ for i = 1:length(tspan_)
         % S and V at time t
         St = S(ic, :);
         Vt = V(ic, :);
+        % School effect
+        contact_temp = contact_;
+        contact_temp(2, 2) = contact_(2, 2) .* school_effect(t, school_);
         % Beta at time t
-        beta_t = beta_ .* contact_ .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_);
+        beta_t = beta_ .* contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
         % Compute F
         F0 = [zeros(num_grp), beta_t .* (St' + vac_1st_fail * Vt'), zeros(num_grp); ...
             zeros(2*num_grp, 3*num_grp)];
