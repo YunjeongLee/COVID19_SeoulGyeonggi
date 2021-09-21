@@ -19,7 +19,7 @@ tspan1 = 0:size(data1, 1)-1;
 date1 = date(1:106, :);
 
 % Social distancing effect
-sd_1st = 1.8322;
+sd_1st = 1 + 0.8322/2;
 sd_2nd = sd_1st * 0.699 * 0.35;
 
 params = {% Parameters to be estimated
