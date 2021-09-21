@@ -28,7 +28,6 @@ sd_3rd_val = sd_2nd_val;
 % School effect
 school = 1;
 
-for i = 1:length(sd_1st_val)
     for j = 1:length(sd_2nd_val)
         params = {% Parameters to be estimated
             'beta', beta, false, '$\beta_1';
@@ -85,4 +84,3 @@ for i = 1:length(sd_1st_val)
         %% Save all variables
         save(sprintf('%s/result.mat', results_path))
     end
-end
