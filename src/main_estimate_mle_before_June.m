@@ -23,6 +23,8 @@ sd_1st = 1 + 0.8322/2;
 sd_2nd = sd_1st * 0.699 * 0.35;
 sd_3rd = sd_2nd;
 
+% School effect
+school = 1;
 
 params = {% Parameters to be estimated
           'beta', init_beta, true, '$\beta_1';
@@ -48,6 +50,8 @@ params = {% Parameters to be estimated
           'sd_1st', sd_1st, false, '1st social distancing effect';
           'sd_2nd', sd_2nd, false, '2nd social distancing effect';
           'sd_3rd', sd_3rd, false, '3rd social distancing effect';
+          % School effect
+          'school', school, false, 'School effect';
           % CFR or severeness
           'cfr', cfr, false, 'case fatality rate';
           'severe', severe, false, 'severity'};
