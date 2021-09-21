@@ -13,6 +13,7 @@ dt_confirmed = alpha_ .* (I(1:end-1, :) + I(2:end, :))/2 * dt_ ...
     + alpha_ .* (Iv1(1:end-1, :) + Iv1(2:end, :))/2 * dt_ ...
     + alpha_ .* (Iv2(1:end-1, :) + Iv2(2:end, :))/2 * dt_;
 
+dt_death = dt_confirmed .* cfr_;
 num_days = length(dt_death) * dt_;
 multiplier4year = kron(eye(num_days), ones(1, 1/dt_));
 
