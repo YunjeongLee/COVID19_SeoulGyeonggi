@@ -41,7 +41,10 @@ params = {% Parameters to be estimated
           'vac_eff', vaccine_eff, false, 'vaccine efficacy';
           % Social distancing effect
           'sd_1st', sd_1st, false, '1st social distancing effect';
-          'sd_2nd', sd_2nd, false, '2nd social distancing effect'};
+          'sd_2nd', sd_2nd, false, '2nd social distancing effect';
+          % CFR or severeness
+          'cfr', cfr, false, 'case fatality rate';
+          'severe', severe, false, 'severity'};
 
 %% Parameter estimation (2021/02/15 ~ 2021/05/31)
 isEstimated = cell2mat(params(:, 3));
