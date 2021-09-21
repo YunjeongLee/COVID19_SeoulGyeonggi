@@ -1,4 +1,4 @@
-function val = compute_daily_confirmed(parameter, sol)
+function val = compute_daily_death(parameter, sol)
 %% Assign parameters
 alpha_ = parameter.alpha;
 dt_ = parameter.dt;
