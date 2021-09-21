@@ -30,6 +30,8 @@ E = zeros(length(tspan_)/dt_+1, num_grp);
 Ev1 = zeros(length(tspan_)/dt_+1, num_grp);
 Ev2 = zeros(length(tspan_)/dt_+1, num_grp);
 I = zeros(length(tspan_)/dt_+1, num_grp);
+Iv1 = zeros(length(tspan_)/dt_+1, num_grp);
+Iv2 = zeros(length(tspan_)/dt_+1, num_grp);
 H = zeros(length(tspan_)/dt_+1, num_grp);
 R = zeros(length(tspan_)/dt_+1, num_grp);
 
@@ -39,6 +41,7 @@ I(1, :) = y0_(2*num_grp+1:3*num_grp); H(1, :) = y0_(3*num_grp+1:4*num_grp);
 R(1, :) = y0_(4*num_grp+1:5*num_grp);
 V1(1, :) = zeros(1, num_grp); V2(1, :) = zeros(1, num_grp);
 Ev1(1, :) = zeros(1, num_grp); Ev2(1, :) = zeros(1, num_grp);
+Iv1(1, :) = zeros(1, num_grp); Iv2(1, :) = zeros(1, num_grp);
 t = 0;
 for i = 1:length(tspan_)
     % Number of doses for 1st and 2nd vaccination at time t
