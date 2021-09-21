@@ -74,6 +74,7 @@ for i = 1:length(tspan_)
         V1(in, :) = V1(ic, :) + dt_ * (num_dose1 - (1 - vac_eff_t(1)) * FOI .* V1(ic, :) - num_dose2);
         V2(in, :) = V2(ic, :) + dt_ * (num_dose2 - (1 - vac_eff_t(2)) * FOI .* V2(ic, :));
         E(in, :) = E(ic, :) + dt_ * (FOI .* S(ic, :) - kappa_ .* E(ic, :));
+        Ev1(in, :) = Ev1(ic, :) + dt_ * ((1 - vac_eff_t(1)) * FOI .* V1(ic, :) - kappa_ .* Ev1(ic, :));
         I(in, :) = I(ic, :) + dt_ * (kappa_ .* E(ic, :) - alpha_ .* I(ic, :));
         H(in, :) = H(ic, :) + dt_ * (alpha_ .* I(ic, :) - gamma_ .* H(ic, :));
         R(in, :) = R(ic, :) + dt_ * (gamma_ .* H(ic, :) + num_dose2 .* vac_eff_t(2));
