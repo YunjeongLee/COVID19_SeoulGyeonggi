@@ -30,7 +30,7 @@ school = 1;
 
 for j = 1:length(sd_2nd_val)
     params = {% Parameters to be estimated
-              'beta', beta, false, '$\beta_1';
+              'beta', beta, false, '$\beta$';
               'delta', 1, true, '$\delta$';
               % Initial state, time stamp and contact matrix
               'y0', y01, false, '$y_0$';
