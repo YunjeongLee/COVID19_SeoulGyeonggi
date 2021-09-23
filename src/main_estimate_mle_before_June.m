@@ -27,7 +27,7 @@ sd_3rd = sd_2nd;
 school = 1;
 
 params = {% Parameters to be estimated
-          'beta', init_beta, true, '$\beta_1';
+          'beta', init_beta, true, '$\beta$';
           'delta', 1, false, '$\delta$';
           % Initial state, time stamp and contact matrix
           'y0', y01, false, '$y_0$';
