@@ -11,10 +11,6 @@ addpath 'model' 'optimizer' 'estimator' 'documentation' 'etc'
 load('../results/estimate_before_June/result.mat', 'theta_mle')
 beta = theta_mle;
 
-%% Load estimate of delta
-results_path = '../results/estimate_sd_1st_2_2nd_2';
-load(sprintf('%s/result.mat', results_path), 'theta_mle')
-
 %% Generate date and update params
 % Epidemiological parameters
 kappa = 1/4;
@@ -32,6 +28,10 @@ sd_3rd_val = [1, 1/0.699, 1/0.35];
 school = [1, 1 + 0.8322/2, (1 + 0.8322/2)^2];
 
 for k = 1:length(sd_2nd_val)
+%% Load estimate of delta
+results_path = '../results/estimate_sd_1st_2_2nd_2';
+load(sprintf('%s/result.mat', results_path), 'theta_mle')
+
 for i = 1:length(sd_3rd_val)
     for j = 1:length(school)
         params = {% Parameters to be estimated
