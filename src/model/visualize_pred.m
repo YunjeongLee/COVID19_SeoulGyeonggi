@@ -14,7 +14,7 @@ sol = solve_covid19(parameter);
 
 daily_confirmed = compute_daily_confirmed(parameter, sol);
 daily_deaths = daily_confirmed .* cfr;
-daily_severe = daily_confirmed .* severe;
+daily_severe = compute_daily_hospitalized(parameter, sol);
 
 %% Compute time-dependent reproduction number
 Rt = compute_rep_num(parameter, sol);
