@@ -19,11 +19,15 @@ tspan1 = 0:size(data1, 1)-1;
 date1 = date(1:106, :);
 
 % Social distancing effect
-sd_1st = 1.8322;
+sd_1st = 1 + 0.8322/2;
 sd_2nd = sd_1st * 0.699 * 0.35;
+sd_3rd = sd_2nd;
+
+% School effect
+school = 1;
 
 params = {% Parameters to be estimated
-          'beta', init_beta, true, '$\beta_1';
+          'beta', init_beta, true, '$\beta$';
           'delta', 1, false, '$\delta$';
           % Initial state, time stamp and contact matrix
           'y0', y01, false, '$y_0$';
@@ -39,9 +43,18 @@ params = {% Parameters to be estimated
           'vac_1st', vaccine_1st, false, '1st dose';
           'vac_2nd', vaccine_2nd, false, '2nd dose';
           'vac_eff', vaccine_eff, false, 'vaccine efficacy';
+          % Hospitalization risk after each dose
+          'hosp_1st', 1-0.75, false, 'hospitalization risk after 1st dose';
+          'hosp_2nd', 1-0.94, false, 'hospitalization risk after 2nd dose';
           % Social distancing effect
           'sd_1st', sd_1st, false, '1st social distancing effect';
-          'sd_2nd', sd_2nd, false, '2nd social distancing effect'};
+          'sd_2nd', sd_2nd, false, '2nd social distancing effect';
+          'sd_3rd', sd_3rd, false, '3rd social distancing effect';
+          % School effect
+          'school', school, false, 'School effect';
+          % CFR or severeness
+          'cfr', cfr, false, 'case fatality rate';
+          'severe', severe, false, 'severity'};
 
 %% Parameter estimation (2021/02/15 ~ 2021/05/31)
 isEstimated = cell2mat(params(:, 3));
@@ -63,7 +76,7 @@ lt = table2latex(mle_table, {'%.4e', 2});
 save_document(lt, sprintf('%s/result.tex', results_path))
 
 %% Generate figure
-visualize_fit(data1, params, theta_mle, date1, cfr, severe, results_path);
+visualize_fit(data1, params, theta_mle, date1, results_path);
 
 %% Save all variables
 save(sprintf('%s/result.mat', results_path))

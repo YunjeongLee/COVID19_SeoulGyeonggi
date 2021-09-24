@@ -18,7 +18,8 @@ school_ = parameter.school;
 %% Find S and V
 num_grp = size(contact_, 1);
 S = sol(:, 1:num_grp);
-V = sol(:, 5*num_grp+1:end);
+V1 = sol(:, num_grp+1:2*num_grp);
+V2 = sol(:, 2*num_grp+1:3*num_grp);
 
 %% Compute time-dependent reproduction number
 Rt = zeros(length(tspan_)/dt_, 1);
@@ -26,11 +27,6 @@ t = 0;
 for i = 1:length(tspan_)
     % Vaccine efficacy at time t
     vac_eff_t = vac_eff_(i, :);
-    if vac_eff_t(2) == 0
-        vac_1st_fail = 0;
-    else
-        vac_1st_fail = (1 - vac_eff_t(1))/vac_eff_t(2);
-    end
     % Delta effect at time t
     delta_prop_t = delta_prop_(i);
     if delta_prop_t == 0
@@ -43,18 +39,26 @@ for i = 1:length(tspan_)
         ic = (i-1)/dt_ + j;
         % S and V at time t
         St = S(ic, :);
-        Vt = V(ic, :);
+        V1t = V1(ic, :);
+        V2t = V2(ic, :);
         % School effect
         contact_temp = contact_;
         contact_temp(2, 2) = contact_(2, 2) .* school_effect(t, school_);
         % Beta at time t
         beta_t = beta_ .* contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
         % Compute F
-        F0 = [zeros(num_grp), beta_t .* (St' + vac_1st_fail * Vt'), zeros(num_grp); ...
-            zeros(2*num_grp, 3*num_grp)];
-        V0 = [kappa_ * eye(num_grp), zeros(num_grp, 2*num_grp); ...
-            - kappa_ * eye(num_grp), alpha_ * eye(num_grp), zeros(num_grp); ...
-            zeros(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
+        F0_elm1 = beta_t .* St';
+        F0_elm2 = (1 - vac_eff_t(1)) * beta_t .* V1t';
+        F0_elm3 = (1 - vac_eff_t(2)) * beta_t .* V2t';
+        F0 = [zeros(num_grp, 3*num_grp), F0_elm1, F0_elm1, F0_elm1, zeros(num_grp); ...
+            zeros(num_grp, 3*num_grp), F0_elm2, F0_elm2, F0_elm2, zeros(num_grp); ...
+            zeros(num_grp, 3*num_grp), F0_elm3, F0_elm3, F0_elm3, zeros(num_grp); ...
+            zeros(4*num_grp, 7*num_grp)];
+        V0_elm1 = kappa_ * eye(num_grp);
+        V0_elm2 = alpha_ * eye(num_grp);
+        V0 = [blkdiag(V0_elm1, V0_elm1, V0_elm1), zeros(3*num_grp, 4*num_grp); ...
+            - blkdiag(V0_elm1, V0_elm1, V0_elm1), blkdiag(V0_elm2, V0_elm2, V0_elm2), zeros(3*num_grp, num_grp); ...
+            zeros(num_grp, 3*num_grp), - alpha_ * eye(num_grp), - alpha_ * eye(num_grp), - alpha_ * eye(num_grp), gamma_ * eye(num_grp)];
         % Compute reproduction number at time t
         Rt(ic) = max(abs(eig(F0/V0)));
         % Time stamp

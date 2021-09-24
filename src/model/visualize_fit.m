@@ -1,4 +1,4 @@
-function [] = visualize_fit(data, params, theta, date, cfr, severe, results_path)
+function [] = visualize_fit(data, params, theta, date, results_path)
 %% Assign Parameters
 names = params(:, 1);
 isEstimated = cell2mat(params(:, 3));
@@ -13,8 +13,8 @@ parameter = params2parameter(params);
 sol = solve_covid19(parameter);
 
 daily_confirmed = compute_daily_confirmed(parameter, sol);
-daily_deaths = daily_confirmed .* cfr;
-daily_severe = daily_confirmed .* severe;
+daily_deaths = compute_daily_death(parameter, sol);
+daily_severe = compute_daily_hospitalized(parameter, sol);
 
 %% Compute time-dependent reproduction number
 Rt = compute_rep_num(parameter, sol);
