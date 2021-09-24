@@ -56,7 +56,7 @@ for i = 1:length(sd_3rd_val)
                   'hosp_2nd', 1-0.94, false, 'hospitalization risk after 2nd dose';
                   % Social distancing effect
                   'sd_1st', sd_1st_val, false, '1st social distancing effect';
-                  'sd_2nd', sd_1st_val * sd_2nd_val, false, '2nd social distancing effect';
+                  'sd_2nd', sd_1st_val * sd_2nd_val(k), false, '2nd social distancing effect';
                   'sd_3rd', sd_1st_val * sd_2nd_val(k) * sd_3rd_val(i), false, '3rd social distancing effect';
                   % School effect
                   'school', school(j), false, 'School effect';
