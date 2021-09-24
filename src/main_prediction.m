@@ -59,7 +59,7 @@ for i = 1:length(sd_3rd_val)
                   'school', school(j), false, 'School effect'};
         
         %% Visualize prediction
-        results_path = sprintf('../results/predict_%d', (i-1)*length(school)+j);
+        results_path = sprintf('../results/predict_exp_%d_%d', k, (i-1)*length(school)+j);
         mkdir(results_path)
         visualize_pred(data, params, theta_mle, date, cfr, severe, results_path);
     end
