@@ -31,6 +31,7 @@ sd_2nd_val = [0.35, (0.699+0.35)/2];
 sd_3rd_val = [1, 1/0.699, 1/0.35];
 school = [1, 1 + 0.8322/2, (1 + 0.8322/2)^2];
 
+for k = 1:length(sd_2nd_val)
 for i = 1:length(sd_3rd_val)
     for j = 1:length(school)
         params = {% Parameters to be estimated
@@ -62,4 +63,5 @@ for i = 1:length(sd_3rd_val)
         mkdir(results_path)
         visualize_pred(data, params, theta_mle, date, cfr, severe, results_path);
     end
+end
 end
