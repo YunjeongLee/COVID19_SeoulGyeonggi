@@ -67,7 +67,7 @@ for k = 1:length(sd_2nd_val)
             %% Visualize prediction
             results_path = sprintf('../results/predict_exp_%d_%d', k+1, (i-1)*length(school)+j);
             mkdir(results_path)
-            visualize_pred(data, params, theta_mle, date, results_path);
+            visualize_fit(data, params, theta_mle, date, results_path);
         end
     end
 end
