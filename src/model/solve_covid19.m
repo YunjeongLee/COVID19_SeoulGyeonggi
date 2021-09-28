@@ -101,6 +101,21 @@ while i < length(tspan_)
             break
         end
     end
+    % If there are negative states update vaccination number
+    if (any(neg_flag_S) || any(neg_flag_V1))
+        % Update vaccination number
+        [vac_1st_, vac_2nd_, neg_flag_S_hist, neg_flag_V1_hist] = update_vaccine(vac_1st_, vac_2nd_, i, neg_flag_S, ...
+            neg_flag_V1, neg_flag_S_hist, neg_flag_V1_hist);
+        % Print current date and age group which have negative states
+        current_date = datetime(2021, 2, 15, 'format', 'yyyy/MM/dd') + (i - 1);
+        logical_str = {'X','O'};
+        fprintf('%s  |   %s    %s     %s     %s     %s     %s     %s     %s    %s   |   %s    %s     %s     %s     %s     %s     %s     %s    %s\n', ...
+            current_date, logical_str{neg_flag_S + 1}, logical_str{neg_flag_V1 + 1})
+        % Reset flag
+        neg_flag_S(:) = false;
+        neg_flag_V1(:) = false;
+        % Reset index
+        i = i - 1;
     end
 end
 
