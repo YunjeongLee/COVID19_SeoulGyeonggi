@@ -43,6 +43,12 @@ V1(1, :) = zeros(1, num_grp); V2(1, :) = zeros(1, num_grp);
 Ev1(1, :) = zeros(1, num_grp); Ev2(1, :) = zeros(1, num_grp);
 Iv1(1, :) = zeros(1, num_grp); Iv2(1, :) = zeros(1, num_grp);
 t = 0;
+
+% History of negative flag
+neg_flag_S_hist = false(1, num_grp);
+neg_flag_V1_hist = false(1, num_grp);
+neg_flag_S = false(1, num_grp);
+neg_flag_V1 = false(1, num_grp);
 while i < length(tspan_)
     % Update loop counter
     i = i + 1;
