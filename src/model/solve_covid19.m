@@ -43,7 +43,9 @@ V1(1, :) = zeros(1, num_grp); V2(1, :) = zeros(1, num_grp);
 Ev1(1, :) = zeros(1, num_grp); Ev2(1, :) = zeros(1, num_grp);
 Iv1(1, :) = zeros(1, num_grp); Iv2(1, :) = zeros(1, num_grp);
 t = 0;
-for i = 1:length(tspan_)
+while i < length(tspan_)
+    % Update loop counter
+    i = i + 1;
     % Number of doses for 1st and 2nd vaccination at time t
     num_dose1 = vac_1st_(i, :);
     num_dose2 = vac_2nd_(i, :);
