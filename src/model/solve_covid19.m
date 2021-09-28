@@ -49,6 +49,7 @@ neg_flag_S_hist = false(1, num_grp);
 neg_flag_V1_hist = false(1, num_grp);
 neg_flag_S = false(1, num_grp);
 neg_flag_V1 = false(1, num_grp);
+i = 0;
 while i < length(tspan_)
     % Update loop counter
     i = i + 1;
