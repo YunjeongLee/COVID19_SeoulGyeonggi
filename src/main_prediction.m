@@ -65,7 +65,7 @@ for k = 1:length(sd_2nd_val)
                       'severe', severe, false, 'severity'};
             
             %% Visualize prediction
-            results_path = sprintf('../results/predict_exp_%d_%d', k, (i-1)*length(school)+j);
+            results_path = sprintf('../results/predict_exp_%d_%d', k+1, (i-1)*length(school)+j);
             mkdir(results_path)
             visualize_pred(data, params, theta_mle, date, results_path);
         end
