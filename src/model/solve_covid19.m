@@ -51,7 +51,7 @@ neg_flag_S = false(1, num_grp);
 neg_flag_V1 = false(1, num_grp);
 i = 0;
 age_grp = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
-fprintf('            |                     Susceptibles                    |        1st Vaccinated       \n');
+fprintf('            |                     Susceptibles                    |                     1st Vaccinated\n');
 fprintf('    Date    |  %s %s %s %s %s %s %s %s %s  |  %s %s %s %s %s %s %s %s %s \n', age_grp{:}, age_grp{:});
 while i < length(tspan_)
     % Update loop counter
