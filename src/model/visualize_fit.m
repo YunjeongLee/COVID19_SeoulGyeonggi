@@ -26,6 +26,7 @@ hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
 plot(date, sum(data, 2), ':*');
 hold off;
+ylim([0, inf]);
 legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
@@ -34,6 +35,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, sum(daily_deaths, 2), 'linewidth', 2);
+ylim([0, inf]);
 legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
@@ -42,6 +44,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, sum(daily_severe, 2), 'linewidth', 2);
+ylim([0, inf]);
 legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
@@ -58,6 +61,7 @@ hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
 plot(date, cumsum(sum(data, 2)), ':*', 'linewidth', 2);
 hold off;
+ylim([0, inf]);
 legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
@@ -66,6 +70,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 2)
 plot(date, cumsum(sum(daily_deaths, 2)), 'linewidth', 2);
+ylim([0, inf]);
 legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
@@ -74,6 +79,7 @@ set(gca, 'fontsize', 15);
 
 subplot(1, 3, 3)
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
+ylim([0, inf]);
 legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
@@ -93,6 +99,7 @@ for i = 1:size(contact_, 1)
     plot(date, daily_confirmed(:, i), 'linewidth', 1.5);
     plot(date, data(:, i), ':*', 'markersize', 1.5);
     hold off;
+    ylim([0, inf]);
     legend('Model', 'Data', 'location', 'northwest')
     title(ages{i})
     set(gca, 'fontsize', 15);
@@ -108,6 +115,7 @@ for i = 1:size(contact_, 1)
     plot(date, cumsum(daily_confirmed(:, i)), 'linewidth', 1.5);
     plot(date, cumsum(data(:, i)), ':*', 'markersize', 1.5);
     hold off;
+    ylim([0, inf]);
     xlabel('Date');
     ylabel('Cases');
     legend('Model', 'Data', 'location', 'northwest')
@@ -122,6 +130,7 @@ figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     plot(date, daily_deaths(:, i), 'linewidth', 1.5);
+    ylim([0, inf]);
     xlabel('Date');
     ylabel('Cases');
     title(ages{i})
@@ -135,6 +144,7 @@ figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     plot(date, cumsum(daily_deaths(:, i)), 'linewidth', 1.5);
+    ylim([0, inf]);
     xlabel('Date');
     ylabel('Cases');
     title(ages{i})
@@ -148,6 +158,7 @@ figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     plot(date, daily_severe(:, i), 'linewidth', 1.5);
+    ylim([0, inf]);
     xlabel('Date');
     ylabel('Cases');
     title(ages{i})
@@ -161,6 +172,7 @@ figure('pos', [10 10 1400 900]);
 for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     plot(date, cumsum(daily_severe(:, i)), 'linewidth', 1.5);
+    ylim([0, inf]);
     xlabel('Date');
     ylabel('Cases');
     title(ages{i})
