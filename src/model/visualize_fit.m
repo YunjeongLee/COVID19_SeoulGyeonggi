@@ -24,7 +24,7 @@ figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
 hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
-plot(date, sum(data, 2), ':*');
+plot(date(1:length(data)), sum(data, 2), ':*');
 hold off;
 ylim([0, inf]);
 legend('Model', 'Data', 'location', 'northwest')
@@ -59,7 +59,7 @@ figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
 hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
-plot(date, cumsum(sum(data, 2)), ':*', 'linewidth', 2);
+plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
 hold off;
 ylim([0, inf]);
 legend('Model', 'Data', 'location', 'northwest')
@@ -97,7 +97,7 @@ for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     hold on;
     plot(date, daily_confirmed(:, i), 'linewidth', 1.5);
-    plot(date, data(:, i), ':*', 'markersize', 1.5);
+    plot(date(1:length(data)), data(:, i), ':*', 'markersize', 1.5);
     hold off;
     ylim([0, inf]);
     legend('Model', 'Data', 'location', 'northwest')
@@ -113,7 +113,7 @@ for i = 1:size(contact_, 1)
     subplot(3, 3, i)
     hold on;
     plot(date, cumsum(daily_confirmed(:, i)), 'linewidth', 1.5);
-    plot(date, cumsum(data(:, i)), ':*', 'markersize', 1.5);
+    plot(date(1:length(data)), cumsum(data(:, i)), ':*', 'markersize', 1.5);
     hold off;
     ylim([0, inf]);
     xlabel('Date');
