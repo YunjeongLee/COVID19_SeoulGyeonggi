@@ -93,6 +93,14 @@ while i < length(tspan_)
         Iv2(in, :) = Iv2(ic, :) + dt_ * (kappa_ .* Ev2(ic, :) - alpha_ .* Iv2(ic, :));
         H(in, :) = H(ic, :) + dt_ * (alpha_ .* (I(ic, :) + Iv1(ic, :) + Iv2(ic, :)) - gamma_ .* H(ic, :));
         R(in, :) = R(ic, :) + dt_ * (gamma_ .* H(ic, :));
+        
+        % Check if there are negative states
+        if (any(S(in, :) < 0) || any(V1(in, :) < 0))
+            neg_flag_S = (S(in, :) < 0);
+            neg_flag_V1 = (V1(in, :) < 0);
+            break
+        end
+    end
     end
 end
 
