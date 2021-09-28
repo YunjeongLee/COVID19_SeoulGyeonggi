@@ -29,7 +29,7 @@ school = [1, 1 + 0.8322/2, (1 + 0.8322/2)^2];
 
 for k = 1:length(sd_2nd_val)
     %% Load estimate of delta
-    results_path = sprintf('../results/estimate_sd_2nd_%d', k);
+    results_path = sprintf('../results/estimate_sd_2nd_%d', k+1 );
     load(sprintf('%s/result.mat', results_path), 'theta_mle')
     
     for i = 1:length(sd_3rd_val)
