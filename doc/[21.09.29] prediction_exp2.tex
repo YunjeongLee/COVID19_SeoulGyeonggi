@@ -208,8 +208,8 @@
 	    	\item 사회적 거리두기 (2021/09/27-2021/12/31)
 	    	\begin{itemize}
 	    		\item 현행 유지
-	    		\item 0.5단계 완화: $1.4306(=1/0.699)$배
-	    		\item 1단계 완화: $2.8571(=1/0.35)$배
+	    		\item 0.5단계 완화: $1.4161$배
+	    		\item 1단계 완화: $2.0053(=1.4161^2)$배
 	    	\end{itemize}
 	    	\item 등교 관련
 	    	\begin{itemize}
@@ -222,7 +222,7 @@
 
 	\foreach \sd in {same, 0.5, 1} {
 		\foreach \sc in {same, 0.5, 1} {
-			\begin{frame}\frametitle{사회적 거리두기 완화 수준: \sd단계\, \& 등교로 인한 contact 증가 수준: \sc}
+			\begin{frame}\frametitle{사회적 거리두기 완화 수준: \sd\, \& 등교로 인한 contact 증가 수준: \sc}
 			    \begin{figure}
 			    	\centering
 			    	\includegraphics[width=11cm]{../results/predict_exp_2_sd3_\sd_school_\sc/daily_all_age.eps}
@@ -231,7 +231,7 @@
 			    \end{figure}
 			\end{frame}
 
-			\begin{frame}\frametitle{사회적 거리두기 완화 수준: \sd단계\, \& 등교로 인한 contact 증가 수준: \sc}
+			\begin{frame}\frametitle{사회적 거리두기 완화 수준: \sd\, \& 등교로 인한 contact 증가 수준: \sc}
 			    \begin{figure}
 			    	\centering
 			    	\includegraphics[width=10cm]{../results/predict_exp_2_sd3_\sd_school_\sc/rep_num.eps}
