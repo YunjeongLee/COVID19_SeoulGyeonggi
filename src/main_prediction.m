@@ -26,6 +26,7 @@ sd_1st_val = 1 + 0.8322/2;
 sd_2nd_val = [0.35, (0.699+0.35)/2];
 sd_3rd_val = [1, 1/0.699, 1/0.35];
 school = [1, 1 + 0.8322/2, (1 + 0.8322/2)^2];
+filename_suffix = {'현행유지', '0.5단계', '1단계'};
 
 for k = 1:length(sd_2nd_val)
     %% Load estimate of delta
@@ -65,7 +66,7 @@ for k = 1:length(sd_2nd_val)
                       'severe', severe, false, 'severity'};
             
             %% Visualize prediction
-            results_path = sprintf('../results/predict_exp_%d_%d', k+1, (i-1)*length(school)+j);
+            results_path = sprintf('../results/predict_exp_%d_sd3_%s_school_%s', k+1, filename_suffix{i}, filename_suffix{j});
             mkdir(results_path)
             visualize_fit(data, params, theta_mle, date, results_path);
         end
