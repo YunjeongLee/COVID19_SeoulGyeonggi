@@ -43,7 +43,19 @@ V1(1, :) = zeros(1, num_grp); V2(1, :) = zeros(1, num_grp);
 Ev1(1, :) = zeros(1, num_grp); Ev2(1, :) = zeros(1, num_grp);
 Iv1(1, :) = zeros(1, num_grp); Iv2(1, :) = zeros(1, num_grp);
 t = 0;
-for i = 1:length(tspan_)
+
+% History of negative flag
+neg_flag_S_hist = false(1, num_grp);
+neg_flag_V1_hist = false(1, num_grp);
+neg_flag_S = false(1, num_grp);
+neg_flag_V1 = false(1, num_grp);
+i = 0;
+age_grp = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
+fprintf('            |                     Susceptibles                    |                     1st Vaccinated\n');
+fprintf('    Date    |  %s %s %s %s %s %s %s %s %s  |  %s %s %s %s %s %s %s %s %s \n', age_grp{:}, age_grp{:});
+while i < length(tspan_)
+    % Update loop counter
+    i = i + 1;
     % Number of doses for 1st and 2nd vaccination at time t
     num_dose1 = vac_1st_(i, :);
     num_dose2 = vac_2nd_(i, :);
@@ -81,6 +93,29 @@ for i = 1:length(tspan_)
         Iv2(in, :) = Iv2(ic, :) + dt_ * (kappa_ .* Ev2(ic, :) - alpha_ .* Iv2(ic, :));
         H(in, :) = H(ic, :) + dt_ * (alpha_ .* (I(ic, :) + Iv1(ic, :) + Iv2(ic, :)) - gamma_ .* H(ic, :));
         R(in, :) = R(ic, :) + dt_ * (gamma_ .* H(ic, :));
+        
+        % Check if there are negative states
+        if (any(S(in, :) < 0) || any(V1(in, :) < 0))
+            neg_flag_S = (S(in, :) < 0);
+            neg_flag_V1 = (V1(in, :) < 0);
+            break
+        end
+    end
+    % If there are negative states update vaccination number
+    if (any(neg_flag_S) || any(neg_flag_V1))
+        % Update vaccination number
+        [vac_1st_, vac_2nd_, neg_flag_S_hist, neg_flag_V1_hist] = update_vaccine(vac_1st_, vac_2nd_, i, neg_flag_S, ...
+            neg_flag_V1, neg_flag_S_hist, neg_flag_V1_hist);
+        % Print current date and age group which have negative states
+        current_date = datetime(2021, 2, 15, 'format', 'yyyy/MM/dd') + (i - 1);
+        logical_str = {'X','O'};
+        fprintf('%s  |   %s    %s     %s     %s     %s     %s     %s     %s    %s   |   %s    %s     %s     %s     %s     %s     %s     %s    %s\n', ...
+            current_date, logical_str{neg_flag_S + 1}, logical_str{neg_flag_V1 + 1})
+        % Reset flag
+        neg_flag_S(:) = false;
+        neg_flag_V1(:) = false;
+        % Reset index
+        i = i - 1;
     end
 end
 
