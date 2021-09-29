@@ -24,7 +24,7 @@ tspan = 0:length(date)-1;
 % Social distancing effect
 sd_1st_val = 1 + 0.8322/2;
 sd_2nd_val = [0.35, (0.699+0.35)/2];
-sd_3rd_val = [1, 1/0.699, 1/0.35];
+sd_3rd_val = [1, 1 + 0.8322/2, (1 + 0.8322/2)^2];
 school = [1, 1 + 0.8322/2, (1 + 0.8322/2)^2];
 filename_suffix = {'same', '0.5', '1'};
 
