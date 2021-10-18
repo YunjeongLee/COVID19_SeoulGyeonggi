@@ -16,7 +16,7 @@ contact = readmatrix(filename);
 %% Load initial state
 filename = '../data/initial_state/value_0215.mat';
 load(filename, 'value_0215');
-init_beta = value{1}(end);
+init_beta = value_0215{1}(end);
 y0 = value{2};
 
 %% Load vaccination number
