@@ -15,7 +15,7 @@ contact = readmatrix(filename);
 
 %% Load initial state
 filename = '../data/initial_state/value_0215.mat';
-load(filename, 'value');
+load(filename, 'value_0215');
 init_beta = value{1}(end);
 y0 = value{2};
 
