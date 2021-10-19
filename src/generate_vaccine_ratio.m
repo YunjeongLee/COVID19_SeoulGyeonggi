@@ -164,8 +164,6 @@ for i = 1:size(vaccine_after_0503, 1)
 end
 
 %% 2021/10/12 to 2021/12/31 (2nd dose)
-% Get 1st dose ratio by age on 2021/09/13
-temp = vaccine_1st(end, :);
 
 % Paste in vaccine_2nd (from 2021/10/12 to 2021/12/3);
 num_to_repeat = 116-35;
