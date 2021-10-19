@@ -15,9 +15,12 @@ contact = readmatrix(filename);
 
 %% Load initial state
 filename = '../data/initial_state/value_0215.mat';
-load(filename, 'value');
-init_beta = value{1}(end);
-y0 = value{2};
+load(filename, 'value_0215');
+init_beta = value_0215{1}(end);
+y0 = value_0215{2};
+
+% Rearragne y0
+y0 = reshape(reshape(y0, 5, 9).', 1, 45);
 
 %% Load vaccination number
 filename = '../data/vaccine/vaccination_number.xlsx';
