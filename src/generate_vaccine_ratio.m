@@ -169,9 +169,8 @@ start = caldays(between(datetime(2021, 2, 26), datetime(2021, 9, 21)+1, 'Days'))
 final = caldays(between(datetime(2021, 2, 26), datetime(2021, 12, 3)+1, 'Days'));
 temp = vaccine_1st(start:final, :);
 
-% Paste in vaccine_2nd (from 2021/10/12 to 2021/12/3);
-num_to_repeat = 116-35;
-vaccine_2nd = [vaccine_2nd; repmat(temp, num_to_repeat, 1)];
+% Paste it to vaccine_2nd
+vaccine_2nd = [vaccine_2nd; temp];
 
 %% Generate csv file
 rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 12, 31, 'format', 'yyyy/MM/dd'));
