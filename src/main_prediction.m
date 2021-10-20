@@ -22,7 +22,7 @@ date = datetime(2021, 2, 15):datetime(2021, 12, 31);
 tspan = 0:length(date)-1;
 
 % Social distancing effect
-sd_1st_val = 1 + 0.8322/2;
+sd_1st_val = 1.4;
 sd_2nd_val = [0.68, 0.68^2, 0.68^3];
 sd_3rd_val = 1;
 school = 1;
