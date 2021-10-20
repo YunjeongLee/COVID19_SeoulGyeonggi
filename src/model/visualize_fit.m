@@ -32,7 +32,7 @@ plot(date(1:length(data)), sum(data, 2), ':*');
 plot(date(length(data)+1:length(data_after_Sep)), data_after_Sep(length(data)+1:end), ':*')
 hold off;
 ylim([0, inf]);
-legend('Model', 'Data', 'location', 'northwest')
+legend('Model', 'Data (before 9/1)', 'Data (after 9/1)', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
@@ -68,7 +68,7 @@ plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
 plot(date(length(data)+1:length(data_after_Sep)), sum(data, 'all') + cumsum(data_after_Sep(length(data)+1:end)), ':*')
 hold off;
 ylim([0, inf]);
-legend('Model', 'Data', 'location', 'northwest')
+legend('Model', 'Data (before 9/1)', 'Data (after 9/1)', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
