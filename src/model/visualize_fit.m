@@ -29,6 +29,7 @@ subplot(1, 3, 1)
 hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
 plot(date(1:length(data)), sum(data, 2), ':*');
+plot(date(length(data)+1:length(data_after_Sep)), data_after_Sep(length(data)+1:end), ':*')
 hold off;
 ylim([0, inf]);
 legend('Model', 'Data', 'location', 'northwest')
@@ -64,6 +65,7 @@ subplot(1, 3, 1)
 hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
 plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
+plot(date(length(data)+1:length(data_after_Sep)), sum(data, 'all') + cumsum(data_after_Sep(length(data)+1:end)), ':*')
 hold off;
 ylim([0, inf]);
 legend('Model', 'Data', 'location', 'northwest')
