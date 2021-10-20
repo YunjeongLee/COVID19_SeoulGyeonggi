@@ -76,9 +76,12 @@ for i = 1:5
     vaccine_2nd = [vaccine_2nd; repmat(temp, 7, 1)];
 end
 
+%% Add vaccination dose for 0-9 and 10-19 for 1st dose
+vaccine_1st = [zeros(size(vaccine_1st, 1), 2), vaccine_1st];
+
 %% 2021/05/02 to 2021/12/31 (1st dose)
-filename = "../data/vaccine/vaccination_12dose_05030913.xlsx";
-vaccine_after_0503 = readmatrix(filename, 'sheet', '1st dose', 'range', 'B2:H21');
+filename = "../data/vaccine/vaccination_12dose_05031018.xlsx";
+vaccine_after_0503 = readmatrix(filename, 'sheet', '1st dose', 'range', 'B2:J26');
 
 % Change into weekly incident vaccination
 vaccine_after_0503 = vaccine_after_0503(2:end, :) - vaccine_after_0503(1:end-1, :);
@@ -91,7 +94,7 @@ for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 9;
     elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 116;
+        num_to_repeat = 81;
     else
         num_to_repeat = 7;
     end
@@ -99,9 +102,6 @@ for i = 1:size(vaccine_after_0503, 1)
     vaccine_1st = [vaccine_1st; repmat(vaccine_after_0503(i, :), num_to_repeat, 1)];
     
 end
-
-% Add vaccination rate for 0-9 and 10-19
-vaccine_1st = [zeros(size(vaccine_1st, 1), 2), vaccine_1st];
 
 %% 2021/05/02 to 2021/06/28 (2nd dose)
 filename = "../data/vaccine/vaccination_12dose_05170628.xlsx";
@@ -138,9 +138,12 @@ for i = 1:size(vaccine_before_0628, 1)
     vaccine_2nd = [vaccine_2nd; repmat(temp, num_to_repeat, 1)];
 end
 
-%% 2021/06/29 to 2021/10/11 (2nd dose)
-filename = "../data/vaccine/vaccination_12dose_05030913.xlsx";
-vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:H21');
+%% Add vaccination dose for 0-9 and 10-19 for 2nd dose
+vaccine_2nd = [zeros(size(vaccine_2nd, 1), 2), vaccine_2nd];
+
+%% 2021/06/29 to 2021/10/18 (2nd dose)
+filename = "../data/vaccine/vaccination_12dose_05031018.xlsx";
+vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:J26');
 
 % Change into weekly incident vaccination
 vaccine_after_0503 = vaccine_after_0503(2:end, :) - vaccine_after_0503(1:end-1, :);
@@ -152,8 +155,6 @@ vaccine_after_0503 = vaccine_after_0503 ./ sum(vaccine_after_0503, 2);
 for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 14;
-    elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 35;
     else
         num_to_repeat = 7;
     end
@@ -162,16 +163,14 @@ for i = 1:size(vaccine_after_0503, 1)
     
 end
 
-% Add vaccination rate for 0-9 and 10-19
-vaccine_2nd = [zeros(size(vaccine_2nd, 1), 2), vaccine_2nd];
-
 %% 2021/10/12 to 2021/12/31 (2nd dose)
-% Get 1st dose ratio by age on 2021/09/13
-temp = vaccine_1st(end, :);
+% Get 1st dose ratio by age between 2021/09/21 and 2021/12/03
+start = caldays(between(datetime(2021, 2, 26), datetime(2021, 9, 21)+1, 'Days'));
+final = caldays(between(datetime(2021, 2, 26), datetime(2021, 12, 3)+1, 'Days'));
+temp = vaccine_1st(start:final, :);
 
-% Paste in vaccine_2nd (from 2021/10/12 to 2021/12/3);
-num_to_repeat = 116-35;
-vaccine_2nd = [vaccine_2nd; repmat(temp, num_to_repeat, 1)];
+% Paste it to vaccine_2nd
+vaccine_2nd = [vaccine_2nd; temp];
 
 %% Generate csv file
 rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 12, 31, 'format', 'yyyy/MM/dd'));
