@@ -19,6 +19,10 @@ daily_severe = compute_daily_hospitalized(parameter, sol);
 %% Compute time-dependent reproduction number
 Rt = compute_rep_num(parameter, sol);
 
+%% Load Seoul, Gyeonggi confirmed cases
+filename = '../data/covid19/total_confirmed_case_seoul_gyeonggi.csv';
+data_after_Sep = readmatrix(filename, 'Delimiter', ',', 'range', 'D2:D247');
+
 %% Visualize daily confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
