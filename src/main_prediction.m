@@ -30,7 +30,7 @@ filename_suffix = {'same', '0.5', '1'};
 
 for k = 1:length(sd_2nd_val)
     %% Load estimate of delta
-    results_path = sprintf('../results/estimate_sd_2nd_%d', k+1 );
+    results_path = sprintf('../results/estimate_sd_2nd_%d', k );
     load(sprintf('%s/result.mat', results_path), 'theta_mle')
     
     for i = 1:length(sd_3rd_val)
