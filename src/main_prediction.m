@@ -55,6 +55,9 @@ for k = 1:length(sd_2nd_val)
                       % Hospitalization risk after each dose
                       'hosp_1st', 1-0.75, false, 'hospitalization risk after 1st dose';
                       'hosp_2nd', 1-0.94, false, 'hospitalization risk after 2nd dose';
+                      % Deaths risk after each dose
+                      'death_1st', 1-0.85, false, 'Death risk after 1st dose';
+                      'death_2nd', 1-0.961, false, 'Death risk after 2nd dose';
                       % Social distancing effect
                       'sd_1st', sd_1st_val, false, '1st social distancing effect';
                       'sd_2nd', sd_1st_val * sd_2nd_val(k), false, '2nd social distancing effect';
