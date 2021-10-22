@@ -35,6 +35,9 @@ for k = 1:length(sd_2nd_val)
     load(sprintf('%s/result.mat', results_path), 'theta_mle')
     
     for i = 1:length(sd_3rd_val)
+        if k == 1 && i == 3
+            continue
+        end
         for j = 1:length(school)
             params = {% Parameters to be estimated
                       'beta', beta, false, '$\beta_1';
