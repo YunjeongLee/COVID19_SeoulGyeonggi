@@ -19,15 +19,24 @@ daily_severe = compute_daily_hospitalized(parameter, sol);
 %% Compute time-dependent reproduction number
 Rt = compute_rep_num(parameter, sol);
 
+%% Load Seoul, Gyeonggi confirmed cases
+filename = '../data/covid19/total_confirmed_case_seoul_gyeonggi.csv';
+data_after_Sep = readmatrix(filename, 'Delimiter', ',', 'range', 'D2:D247');
+
 %% Visualize daily confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
 subplot(1, 3, 1)
 hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
 plot(date(1:length(data)), sum(data, 2), ':*');
+if length(date) > 199
+    plot(date(length(data)+1:length(data_after_Sep)), data_after_Sep(length(data)+1:end), ':*')
+    legend('Model', 'Data (before 9/1)', 'Data (after 9/1)', 'location', 'northwest')
+else
+    legend('Model', 'Data', 'location', 'northwest')
+end
 hold off;
 ylim([0, inf]);
-legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
@@ -60,9 +69,14 @@ subplot(1, 3, 1)
 hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
 plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
+if length(date) > 199
+    plot(date(length(data)+1:length(data_after_Sep)), sum(data, 'all') + cumsum(data_after_Sep(length(data)+1:end)), ':*')
+    legend('Model', 'Data (before 9/1)', 'Data (after 9/1)', 'location', 'northwest')
+else
+    legend('Model', 'Data', 'location', 'northwest')
+end
 hold off;
 ylim([0, inf]);
-legend('Model', 'Data', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')

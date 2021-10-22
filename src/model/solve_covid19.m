@@ -116,6 +116,7 @@ while i < length(tspan_)
         neg_flag_V1(:) = false;
         % Reset index
         i = i - 1;
+        t = t - dt_ * j;
     end
 end
 

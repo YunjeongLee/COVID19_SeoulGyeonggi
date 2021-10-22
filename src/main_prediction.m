@@ -22,15 +22,15 @@ date = datetime(2021, 2, 15):datetime(2021, 12, 31);
 tspan = 0:length(date)-1;
 
 % Social distancing effect
-sd_1st_val = 1 + 0.8322/2;
-sd_2nd_val = [0.35, (0.699+0.35)/2];
-sd_3rd_val = [1, 1 + 0.8322/2, (1 + 0.8322/2)^2];
-school = [1, 1 + 0.8322/2, (1 + 0.8322/2)^2];
+sd_1st_val = 1.4;
+sd_2nd_val = [0.68, 0.68^2, 0.68^3];
+sd_3rd_val = 1;
+school = 1;
 filename_suffix = {'same', '0.5', '1'};
 
 for k = 1:length(sd_2nd_val)
     %% Load estimate of delta
-    results_path = sprintf('../results/estimate_sd_2nd_%d', k+1 );
+    results_path = sprintf('../results/estimate_sd_2nd_%d', k );
     load(sprintf('%s/result.mat', results_path), 'theta_mle')
     
     for i = 1:length(sd_3rd_val)
@@ -66,7 +66,7 @@ for k = 1:length(sd_2nd_val)
                       'severe', severe, false, 'severity'};
             
             %% Visualize prediction
-            results_path = sprintf('../results/predict_exp_%d_sd3_%s_school_%s', k+1, filename_suffix{i}, filename_suffix{j});
+            results_path = sprintf('../results/predict_exp_%d_sd3_%s_school_%s', k, filename_suffix{i}, filename_suffix{j});
             mkdir(results_path)
             visualize_fit(data, params, theta_mle, date, results_path);
         end
