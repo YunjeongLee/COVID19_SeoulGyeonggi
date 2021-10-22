@@ -3,6 +3,7 @@ function val = compute_daily_death(parameter, sol)
 alpha_ = parameter.alpha;
 dt_ = parameter.dt;
 cfr_ = parameter.cfr;
+death_1st_ = parameter.death_1st;
 num_grp = size(parameter.contact, 1);
 I = sol(:, 6*num_grp+1:7*num_grp);
 Iv1 = sol(:, 7*num_grp+1:8*num_grp);
