@@ -70,7 +70,7 @@ for k = 1:length(sd_2nd_val)
                       'severe', severe, false, 'severity'};
             
             %% Visualize prediction
-            results_path = sprintf('../results/predict_exp_%d_sd3_%s_school_%s', k, filename_suffix{i}, filename_suffix{j});
+            results_path = sprintf('../results/predict_exp_%d_sd3_%s_school_%s', k, filename_sd{i}, filename_sch{j});
             mkdir(results_path)
             visualize_fit(data, params, theta_mle, date, results_path);
         end
