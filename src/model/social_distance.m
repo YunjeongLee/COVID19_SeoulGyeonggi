@@ -3,7 +3,7 @@ if t < 136
     val = 1;
 elseif (t >= 136) && (t < 147)
     val = sd_1st;
-elseif (t >= 147) && (t < 224)
+elseif (t >= 147) && (t < 259)
     val = sd_2nd;
 else
     val = sd_3rd;
