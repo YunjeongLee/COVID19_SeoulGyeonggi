@@ -32,6 +32,8 @@ plot(date(1:length(data)), sum(data, 2), ':*');
 if length(date) > 106
     plot(date(length(data)+1:length(data_after_Sep)), data_after_Sep(length(data)+1:end), ':*')
     legend('Model', 'Data (before 9/1)', 'Data (after 9/1)', 'location', 'northwest')
+else
+    legend('Model', 'Data', 'location', 'northwest')
 end
 hold off;
 ylim([0, inf]);
@@ -70,6 +72,8 @@ plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
 if length(date) > 106
     plot(date(length(data)+1:length(data_after_Sep)), sum(data, 'all') + cumsum(data_after_Sep(length(data)+1:end)), ':*')
     legend('Model', 'Data (before 9/1)', 'Data (after 9/1)', 'location', 'northwest')
+else
+    legend('Model', 'Data', 'location', 'northwest')
 end
 hold off;
 ylim([0, inf]);
