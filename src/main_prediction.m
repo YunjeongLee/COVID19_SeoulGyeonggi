@@ -26,7 +26,7 @@ sd_1st_val = 1.4;
 sd_2nd_val = [0.68, 0.68^2, 0.68^3];
 sd_3rd_val = 1;
 school = 1;
-filename_suffix = {'same', '0.5', '1'};
+filename_sd = {'same', '1', '2'};
 filename_sch = {'same', '1', '2', 'max'};
 
 for k = 1:length(sd_2nd_val)
