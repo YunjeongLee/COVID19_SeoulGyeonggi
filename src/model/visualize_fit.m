@@ -207,3 +207,14 @@ ylim([0, 3])
 title('Time-dependent reproduction number')
 set(gca, 'fontsize', 20);
 saveas(gca, sprintf('%s/rep_num.eps', results_path), 'epsc');
+
+%% Find the scaling factor k of number of severe illness to compare with used proportion of the number of beds
+used_beds = readmatrix('../data/covid19/covid19_beds.xlsx', 'range', 'H2:H40');
+date_beds = datetime(2021, 9, 4):datetime(2021, 10, 12);
+start_day = caldays(between(datetime(2021, 2, 15), datetime(2021, 9, 4), 'Days'));
+final_day = caldays(between(datetime(2021, 2, 15), datetime(2021, 10, 12), 'Days'));
+day_beds = start_day:final_day;
+pred = sum(daily_severe(day_beds+1, :), 2);
+model = @(k, x) k .* x;
+k = nlinfit(pred, used_beds, model, 0.01);
+
