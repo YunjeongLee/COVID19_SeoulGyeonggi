@@ -29,7 +29,7 @@ school = [1, 1.4, 1.4^2, 7.0721];
 filename_sd = {'same', '1', '2'};
 filename_sch = {'same', '1', '2', 'max'};
 
-for k = 3:length(sd_2nd_val)
+for k = 1:length(sd_2nd_val)
     %% Load estimate of delta
     results_path = sprintf('../results/estimate_sd_2nd_%d', k );
     load(sprintf('%s/result.mat', results_path), 'theta_mle')
