@@ -218,3 +218,16 @@ pred = sum(daily_severe(day_beds+1, :), 2);
 model = @(k, x) k .* x;
 k = nlinfit(pred, used_beds, model, 0.01);
 
+%% Plot the predicted proportion of the number of beds
+figure('pos', [10 10 1600 900]);
+hold on;
+plot(date, k * sum(daily_severe, 2), 'linewidth', 2);
+plot(date_beds, used_beds, ':*', 'markersize', 1.5);
+hold off;
+xlabel('Date')
+ylabel('Proportion')
+ylim([0, 1])
+legend('Model', 'Data')
+title('Proportion of used beds')
+set(gca, 'fontsize', 20);
+saveas(gca, sprintf('%s/prop_beds.eps', results_path), 'epsc');
