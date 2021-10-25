@@ -222,7 +222,7 @@ k = nlinfit(pred, used_beds, model, 0.01);
 figure('pos', [10 10 1600 900]);
 hold on;
 plot(date, k * sum(daily_severe, 2), 'linewidth', 2);
-plot(date_beds, used_beds, ':*', 'markersize', 1.5);
+plot(date_beds, used_beds, ':*');
 hold off;
 xlabel('Date')
 ylabel('Proportion')
