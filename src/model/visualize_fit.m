@@ -88,6 +88,7 @@ hold on;
 plot(date, k * sum(daily_severe, 2), 'linewidth', 2);
 plot(date_beds, used_beds, ':*');
 hold off;
+ylim([0 inf]);
 xlabel('Date')
 ylabel('No. used beds')
 legend('Model', 'Data', 'location', 'northwest')
