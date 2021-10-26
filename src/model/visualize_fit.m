@@ -73,7 +73,7 @@ set(gca, 'fontsize', 13);
 saveas(gca, sprintf('%s/cumul_severe_all_age.eps', results_path), 'epsc');
 
 %% Find the scaling factor k of number of severe illness to compare with used proportion of the number of beds
-used_beds = readmatrix('../data/covid19/covid19_beds.xlsx', 'range', 'H2:H40');
+used_beds = readmatrix('../data/covid19/covid19_beds.xlsx', 'range', 'G2:G40');
 date_beds = datetime(2021, 9, 4):datetime(2021, 10, 12);
 start_day = caldays(between(datetime(2021, 2, 15), datetime(2021, 9, 4), 'Days'));
 final_day = caldays(between(datetime(2021, 2, 15), datetime(2021, 10, 12), 'Days'));
