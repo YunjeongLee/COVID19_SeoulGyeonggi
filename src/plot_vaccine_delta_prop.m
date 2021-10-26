@@ -5,7 +5,7 @@ restoredefaultpath
 addpath 'model' 'optimizer' 'estimator' 'documentation' 'etc'
 
 %% Load data
-[~, date, delta_prop, ~, ~, ~, ...
+[~, ~, delta_prop, ~, ~, ~, ...
     vaccine_1st, vaccine_2nd, vaccine_eff, ~, ~] = load_data();
 
 %% Delete first 14 rows
@@ -23,6 +23,7 @@ results_path = '../results/data';
 mkdir(results_path);
 
 %% Plot vaccination number
+date = datetime(2021, 2, 15):datetime(2021, 10, 18);
 n = length(date);
 
 % Delta proportion
