@@ -16,6 +16,7 @@ dt_ = parameter.dt;
 sd_1st_ = parameter.sd_1st;
 sd_2nd_ = parameter.sd_2nd;
 sd_3rd_ = parameter.sd_3rd;
+sd_4th_ = parameter.sd_4th;
 school_ = parameter.school;
 
 %% Solve model using difference equation
