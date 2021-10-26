@@ -71,7 +71,7 @@ while i < length(tspan_)
     for j = 1:1/dt_
         % Time stamp
         t = t + dt_;
-        % School effect
+        % Initialize contact_temp
         contact_temp = contact_;
         % All merged contacts except school effect
         contact_temp = contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
