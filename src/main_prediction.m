@@ -24,9 +24,10 @@ tspan = 0:length(date)-1;
 % Social distancing effect
 sd_1st_val = 1.4;
 sd_2nd_val = [0.68, 0.68^2, 0.68^3];
-sd_3rd_val = 1;
-school = 1;
-filename_suffix = {'same', '0.5', '1'};
+sd_3rd_val = [1, 1.4, 1.4^2];
+school = [1, 1.4, 1.4^2, Inf];
+filename_sd = {'same', '1', '2'};
+filename_sch = {'same', '1', '2', 'max'};
 
 for k = 1:length(sd_2nd_val)
     %% Load estimate of delta
@@ -34,6 +35,9 @@ for k = 1:length(sd_2nd_val)
     load(sprintf('%s/result.mat', results_path), 'theta_mle')
     
     for i = 1:length(sd_3rd_val)
+        if k == 1 && i == 3
+            continue
+        end
         for j = 1:length(school)
             params = {% Parameters to be estimated
                       'beta', beta, false, '$\beta_1';
@@ -55,6 +59,9 @@ for k = 1:length(sd_2nd_val)
                       % Hospitalization risk after each dose
                       'hosp_1st', 1-0.75, false, 'hospitalization risk after 1st dose';
                       'hosp_2nd', 1-0.94, false, 'hospitalization risk after 2nd dose';
+                      % Deaths risk after each dose
+                      'death_1st', 1-0.85, false, 'Death risk after 1st dose';
+                      'death_2nd', 1-0.961, false, 'Death risk after 2nd dose';
                       % Social distancing effect
                       'sd_1st', sd_1st_val, false, '1st social distancing effect';
                       'sd_2nd', sd_1st_val * sd_2nd_val(k), false, '2nd social distancing effect';
@@ -66,7 +73,7 @@ for k = 1:length(sd_2nd_val)
                       'severe', severe, false, 'severity'};
             
             %% Visualize prediction
-            results_path = sprintf('../results/predict_exp_%d_sd3_%s_school_%s', k, filename_suffix{i}, filename_suffix{j});
+            results_path = sprintf('../results/predict_exp_%d_sd3_%s_school_%s', k, filename_sd{i}, filename_sch{j});
             mkdir(results_path)
             visualize_fit(data, params, theta_mle, date, results_path);
         end
