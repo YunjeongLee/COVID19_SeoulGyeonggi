@@ -58,17 +58,6 @@ hold off;
 ylim([0, inf]);
 xlabel('Date');
 ylabel('Cases');
-title('Confirmed')
-set(gca, 'fontsize', 15);
-
-subplot(1, 3, 2)
-plot(date, cumsum(sum(daily_deaths, 2)), 'linewidth', 2);
-ylim([0, inf]);
-legend('Model', 'location', 'northwest')
-xlabel('Date');
-ylabel('Cases');
-title('Deaths')
-set(gca, 'fontsize', 15);
 
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
 ylim([0, inf]);
