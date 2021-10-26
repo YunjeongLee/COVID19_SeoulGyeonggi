@@ -45,7 +45,6 @@ saveas(gca, sprintf('%s/incident_confirmed_all_age.eps', results_path), 'epsc');
 
 %% Visualize cumulative confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
-subplot(1, 3, 1)
 hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
 plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
@@ -71,7 +70,6 @@ ylabel('Cases');
 title('Deaths')
 set(gca, 'fontsize', 15);
 
-subplot(1, 3, 3)
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
 ylim([0, inf]);
 legend('Model', 'location', 'northwest')
