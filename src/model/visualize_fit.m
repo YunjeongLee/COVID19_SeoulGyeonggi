@@ -93,4 +93,4 @@ ylabel('No. used beds')
 legend('Model', 'Data')
 title('The number of used beds')
 set(gca, 'fontsize', 13);
-saveas(gca, sprintf('%s/prop_beds.eps', results_path), 'epsc');
+saveas(gca, sprintf('%s/num_beds.eps', results_path), 'epsc');
