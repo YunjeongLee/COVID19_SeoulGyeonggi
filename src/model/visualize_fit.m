@@ -17,7 +17,7 @@ daily_confirmed = compute_daily_confirmed(parameter, sol);
 daily_severe = compute_daily_hospitalized(parameter, sol);
 
 %% Compute time-dependent reproduction number
-Rt = compute_rep_num(parameter, sol);
+% Rt = compute_rep_num(parameter, sol);
 
 %% Load Seoul, Gyeonggi confirmed cases
 filename = '../data/covid19/total_confirmed_case_seoul_gyeonggi.csv';
