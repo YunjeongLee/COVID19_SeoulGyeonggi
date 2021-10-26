@@ -75,7 +75,7 @@ while i < length(tspan_)
         % Initialize contact_temp
         contact_temp = contact_;
         % All merged contacts except school effect
-        contact_temp = contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_, sd_4th_);
+        contact_temp = contact_temp .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_, sd_4th_);
         % If full attendance & no mask, multiply different value
         if school_ ~= Inf
             contact_temp(2, 2) = contact_temp(2, 2) .* school_effect(t, school_);
@@ -83,7 +83,7 @@ while i < length(tspan_)
             contact_temp(2, 2) = contact_(2, 2) * school_effect(t, 7.0721);
         end
         % Beta at time t
-        beta_t = beta_ .* contact_temp;
+        beta_t = beta_ .* contact_temp .* delta_effect_t;
         % Current index and next index
         ic = (i-1)/dt_ + j;
         in = ic + 1;
