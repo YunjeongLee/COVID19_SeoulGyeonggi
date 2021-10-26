@@ -41,7 +41,7 @@ ylabel('Cases');
 title('Daily incident confirmed cases for all ages')
 set(gca, 'fontsize', 13);
 
-saveas(gca, sprintf('%s/daily_all_age.eps', results_path), 'epsc');
+saveas(gca, sprintf('%s/incident_confirmed_all_age.eps', results_path), 'epsc');
 
 %% Visualize cumulative confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
