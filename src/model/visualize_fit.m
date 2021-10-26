@@ -91,6 +91,6 @@ hold off;
 xlabel('Date')
 ylabel('No. used beds')
 legend('Model', 'Data')
-title('Proportion of used beds')
+title('The number of used beds')
 set(gca, 'fontsize', 13);
 saveas(gca, sprintf('%s/prop_beds.eps', results_path), 'epsc');
