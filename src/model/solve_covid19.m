@@ -74,6 +74,9 @@ while i < length(tspan_)
         % School effect
         contact_temp = contact_;
         contact_temp(2, 2) = contact_(2, 2) .* school_effect(t, school_);
+        if school_ ~= Inf
+        else
+        end
         % Beta at time t
         beta_t = beta_ .* contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
         % Current index and next index
