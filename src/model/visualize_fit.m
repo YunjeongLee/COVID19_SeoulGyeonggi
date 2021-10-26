@@ -38,7 +38,7 @@ hold off;
 ylim([0, inf]);
 xlabel('Date');
 ylabel('Cases');
-title('Confirmed')
+title('Daily incident confirmed cases for all ages')
 set(gca, 'fontsize', 13);
 
 subplot(1, 3, 2)
