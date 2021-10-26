@@ -44,7 +44,7 @@ set(gca, 'fontsize', 13);
 saveas(gca, sprintf('%s/incident_confirmed_all_age.eps', results_path), 'epsc');
 
 %% Visualize cumulative confirmed cases, deaths, severe cases
-figure('pos', [10 10 1600 400]);
+figure('pos', [10 10 1100 900]);
 hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
 plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
@@ -197,7 +197,7 @@ model = @(k, x) k .* x;
 k = nlinfit(pred, used_beds, model, 0.01);
 
 %% Plot the predicted proportion of the number of beds
-figure('pos', [10 10 1600 900]);
+figure('pos', [10 10 1100 900]);
 hold on;
 plot(date, k * sum(daily_severe, 2), 'linewidth', 2);
 plot(date_beds, used_beds, ':*');
