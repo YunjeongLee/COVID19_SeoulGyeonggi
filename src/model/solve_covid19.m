@@ -73,6 +73,8 @@ while i < length(tspan_)
         t = t + dt_;
         % School effect
         contact_temp = contact_;
+        % All merged contacts except school effect
+        contact_temp = contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
         if school_ ~= Inf
             contact_temp(2, 2) = contact_(2, 2) .* school_effect(t, school_);
         else
