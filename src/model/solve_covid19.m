@@ -79,7 +79,7 @@ while i < length(tspan_)
         if school_ ~= Inf
             contact_temp(2, 2) = contact_(2, 2) .* school_effect(t, school_);
         else
-            contact_temp(2, 2) = contact_(2, 2) * 7.0721;
+            contact_temp(2, 2) = contact_(2, 2) * school_effect(t, 7.0721);
         end
         % Beta at time t
         beta_t = beta_ .* contact_temp;
