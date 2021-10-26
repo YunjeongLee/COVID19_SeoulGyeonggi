@@ -90,7 +90,6 @@ plot(date_beds, used_beds, ':*');
 hold off;
 xlabel('Date')
 ylabel('Proportion')
-ylim([0, 1])
 legend('Model', 'Data')
 title('Proportion of used beds')
 set(gca, 'fontsize', 13);
