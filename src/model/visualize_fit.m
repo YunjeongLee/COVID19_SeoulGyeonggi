@@ -41,25 +41,6 @@ ylabel('Cases');
 title('Daily incident confirmed cases for all ages')
 set(gca, 'fontsize', 13);
 
-subplot(1, 3, 2)
-plot(date, sum(daily_deaths, 2), 'linewidth', 2);
-ylim([0, inf]);
-legend('Model', 'location', 'northwest')
-xlabel('Date');
-ylabel('Cases');
-title('Deaths')
-set(gca, 'fontsize', 15);
-
-subplot(1, 3, 3)
-plot(date, sum(daily_severe, 2), 'linewidth', 2);
-ylim([0, inf]);
-legend('Model', 'location', 'northwest')
-xlabel('Date');
-ylabel('Cases');
-title('Severe')
-set(gca, 'fontsize', 15);
-sgtitle('Daily incident cases for all ages', 'fontsize', 20)
-
 saveas(gca, sprintf('%s/daily_all_age.eps', results_path), 'epsc');
 
 %% Visualize cumulative confirmed cases, deaths, severe cases
