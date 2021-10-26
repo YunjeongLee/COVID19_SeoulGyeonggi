@@ -5,7 +5,7 @@ restoredefaultpath
 addpath 'model' 'optimizer' 'estimator' 'documentation' 'etc'
 
 %% Load data
-[~, date, delta_prop, ~, ~, ~, ...
+[~, ~, delta_prop, ~, ~, ~, ...
     vaccine_1st, vaccine_2nd, vaccine_eff, ~, ~] = load_data();
 
 %% Delete first 14 rows
