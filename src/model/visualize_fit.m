@@ -38,7 +38,7 @@ hold off;
 ylim([0, inf]);
 xlabel('Date');
 ylabel('Cases');
-set(gca, 'fontsize', 20);
+set(gca, 'fontsize', 40);
 
 saveas(gca, sprintf('%s/incident_confirmed_all_age.eps', results_path), 'epsc');
 
@@ -57,7 +57,7 @@ hold off;
 ylim([0, inf]);
 xlabel('Date');
 ylabel('Cases');
-set(gca, 'fontsize', 20);
+set(gca, 'fontsize', 40);
 saveas(gca, sprintf('%s/cumul_confirmed_all_age.eps', results_path), 'epsc');
 
 figure('pos', [10 10 1000 600]);
@@ -66,7 +66,7 @@ ylim([0, inf]);
 legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
-set(gca, 'fontsize', 20);
+set(gca, 'fontsize', 40);
 saveas(gca, sprintf('%s/cumul_severe_all_age.eps', results_path), 'epsc');
 
 %% Find the scaling factor k of number of severe illness to compare with used proportion of the number of beds
@@ -89,5 +89,5 @@ ylim([0 inf]);
 xlabel('Date')
 ylabel('No. used beds')
 legend('Model', 'Data', 'location', 'northwest')
-set(gca, 'fontsize', 20);
+set(gca, 'fontsize', 40);
 saveas(gca, sprintf('%s/num_beds.eps', results_path), 'epsc');
