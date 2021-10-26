@@ -62,6 +62,7 @@ title('Daily cumulative confirmed cases for all ages')
 set(gca, 'fontsize', 13);
 saveas(gca, sprintf('%s/cumul_confirmed_all_age.eps', results_path), 'epsc');
 
+figure('pos', [10 10 1100 900]);
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
 ylim([0, inf]);
 legend('Model', 'location', 'northwest')
