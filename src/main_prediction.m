@@ -25,6 +25,7 @@ tspan = 0:length(date)-1;
 sd_1st_val = 1.4;
 sd_2nd_val = [0.68, 0.68^2, 0.68^3];
 sd_3rd_val = 1.4;
+sd_4rd_val = 1.4;
 school = [1, 1.4, 1.4^2, Inf];
 filename_sd = {'same', '1', '2'};
 filename_sch = {'same', '1', '2', 'max'};
