@@ -38,7 +38,6 @@ hold off;
 ylim([0, inf]);
 xlabel('Date');
 ylabel('Cases');
-title('Daily incident confirmed cases for all ages')
 set(gca, 'fontsize', 20);
 
 saveas(gca, sprintf('%s/incident_confirmed_all_age.eps', results_path), 'epsc');
@@ -58,7 +57,6 @@ hold off;
 ylim([0, inf]);
 xlabel('Date');
 ylabel('Cases');
-title('Daily cumulative confirmed cases for all ages')
 set(gca, 'fontsize', 20);
 saveas(gca, sprintf('%s/cumul_confirmed_all_age.eps', results_path), 'epsc');
 
@@ -68,7 +66,6 @@ ylim([0, inf]);
 legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
-title('Cumulative severe cases for all ages')
 set(gca, 'fontsize', 20);
 saveas(gca, sprintf('%s/cumul_severe_all_age.eps', results_path), 'epsc');
 
@@ -92,6 +89,5 @@ ylim([0 inf]);
 xlabel('Date')
 ylabel('No. used beds')
 legend('Model', 'Data', 'location', 'northwest')
-title('The number of used beds')
 set(gca, 'fontsize', 20);
 saveas(gca, sprintf('%s/num_beds.eps', results_path), 'epsc');
