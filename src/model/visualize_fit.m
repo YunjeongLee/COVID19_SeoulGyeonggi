@@ -39,7 +39,7 @@ ylim([0, inf]);
 xlabel('Date');
 ylabel('Cases');
 title('Confirmed')
-set(gca, 'fontsize', 15);
+set(gca, 'fontsize', 13);
 
 subplot(1, 3, 2)
 plot(date, sum(daily_deaths, 2), 'linewidth', 2);
@@ -228,5 +228,5 @@ ylabel('Proportion')
 ylim([0, 1])
 legend('Model', 'Data')
 title('Proportion of used beds')
-set(gca, 'fontsize', 20);
+set(gca, 'fontsize', 13);
 saveas(gca, sprintf('%s/prop_beds.eps', results_path), 'epsc');
