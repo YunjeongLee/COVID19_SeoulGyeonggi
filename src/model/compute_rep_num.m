@@ -41,11 +41,18 @@ for i = 1:length(tspan_)
         St = S(ic, :);
         V1t = V1(ic, :);
         V2t = V2(ic, :);
-        % School effect
+        % Initialize contact_temp
         contact_temp = contact_;
-        contact_temp(2, 2) = contact_(2, 2) .* school_effect(t, school_);
+        % All merged contacts except school effect
+        contact_temp = contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
+        % If full attendance & no mask, multiply different value
+        if school_ ~= Inf
+            contact_temp(2, 2) = contact_(2, 2) .* school_effect(t, school_);
+        else
+            contact_temp(2, 2) = contact_(2, 2) * 7.0721;
+        end
         % Beta at time t
-        beta_t = beta_ .* contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
+        beta_t = beta_ .* contact_temp;
         % Compute F
         F0_elm1 = beta_t .* St';
         F0_elm2 = (1 - vac_eff_t(1)) * beta_t .* V1t';
