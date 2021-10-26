@@ -13,7 +13,7 @@ parameter = params2parameter(params);
 sol = solve_covid19(parameter);
 
 daily_confirmed = compute_daily_confirmed(parameter, sol);
-daily_deaths = compute_daily_death(parameter, sol);
+% daily_deaths = compute_daily_death(parameter, sol);
 daily_severe = compute_daily_hospitalized(parameter, sol);
 
 %% Compute time-dependent reproduction number
