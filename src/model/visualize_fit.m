@@ -25,7 +25,6 @@ data_after_Sep = readmatrix(filename, 'Delimiter', ',', 'range', 'D2:D247');
 
 %% Visualize daily confirmed cases, deaths, severe cases
 figure('pos', [10 10 1600 400]);
-subplot(1, 3, 1)
 hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
 plot(date(1:length(data)), sum(data, 2), ':*');
