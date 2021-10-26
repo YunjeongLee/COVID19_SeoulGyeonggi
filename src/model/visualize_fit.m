@@ -90,7 +90,7 @@ plot(date_beds, used_beds, ':*');
 hold off;
 xlabel('Date')
 ylabel('No. used beds')
-legend('Model', 'Data')
+legend('Model', 'Data', 'location', 'northwest')
 title('The number of used beds')
 set(gca, 'fontsize', 20);
 saveas(gca, sprintf('%s/num_beds.eps', results_path), 'epsc');
