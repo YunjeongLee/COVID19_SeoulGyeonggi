@@ -68,6 +68,7 @@ ylim([0, inf]);
 legend('Model', 'location', 'northwest')
 xlabel('Date');
 ylabel('Cases');
+title('Cumulative severe cases for all ages')
 
 %% Find the scaling factor k of number of severe illness to compare with used proportion of the number of beds
 used_beds = readmatrix('../data/covid19/covid19_beds.xlsx', 'range', 'H2:H40');
