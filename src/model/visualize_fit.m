@@ -58,6 +58,7 @@ hold off;
 ylim([0, inf]);
 xlabel('Date');
 ylabel('Cases');
+title('Daily cumulative confirmed cases for all ages')
 
 plot(date, cumsum(sum(daily_severe, 2)), 'linewidth', 2);
 ylim([0, inf]);
