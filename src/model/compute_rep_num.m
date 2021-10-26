@@ -44,7 +44,7 @@ for i = 1:length(tspan_)
         % Initialize contact_temp
         contact_temp = contact_;
         % All merged contacts except school effect
-        contact_temp = contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
+        contact_temp = contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_, sd_4th_);
         % If full attendance & no mask, multiply different value
         if school_ ~= Inf
             contact_temp(2, 2) = contact_temp(2, 2) .* school_effect(t, school_);
