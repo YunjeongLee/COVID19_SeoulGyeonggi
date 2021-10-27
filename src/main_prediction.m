@@ -18,7 +18,7 @@ alpha = 1/4;
 gamma = 1/14;
 
 % Dates
-date = datetime(2021, 2, 15):datetime(2021, 12, 31);
+date = datetime(2021, 2, 15):datetime(2022, 1, 31);
 tspan = 0:length(date)-1;
 
 % Social distancing effect
