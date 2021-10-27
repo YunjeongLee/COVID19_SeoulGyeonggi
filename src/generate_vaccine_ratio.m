@@ -94,7 +94,7 @@ for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 9;
     elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 81;
+        num_to_repeat = 81+31;
     else
         num_to_repeat = 7;
     end
@@ -166,14 +166,14 @@ end
 %% 2021/10/12 to 2021/12/31 (2nd dose)
 % Get 1st dose ratio by age between 2021/09/21 and 2021/12/03
 start = caldays(between(datetime(2021, 2, 26), datetime(2021, 9, 21)+1, 'Days'));
-final = caldays(between(datetime(2021, 2, 26), datetime(2021, 12, 3)+1, 'Days'));
+final = caldays(between(datetime(2021, 2, 26), datetime(2022, 1, 3)+1, 'Days'));
 temp = vaccine_1st(start:final, :);
 
 % Paste it to vaccine_2nd
 vaccine_2nd = [vaccine_2nd; temp];
 
 %% Generate csv file
-rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 12, 31, 'format', 'yyyy/MM/dd'));
+rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2022, 1, 31, 'format', 'yyyy/MM/dd'));
 varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
 
 % Add zeros in front of 2021/02/26
