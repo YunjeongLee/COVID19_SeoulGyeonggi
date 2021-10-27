@@ -79,8 +79,8 @@ while i < length(tspan_)
         % If full attendance & no mask, multiply different value
         if school_ ~= Inf
             contact_temp(2, 2) = contact_temp(2, 2) .* school_effect(t, school_);
-        else
-            contact_temp(2, 2) = contact_(2, 2) * school_effect(t, 7.0721);
+        elseif (school_ == Inf) && (t >= 259)
+            contact_temp(2, 2) = contact_temp(2, 2) * school_effect(t, 7.0721) ./ social_distance(t, sd_1st_, sd_2nd_, sd_3rd_, sd_4th_);
         end
         % Beta at time t
         beta_t = beta_ .* contact_temp;
