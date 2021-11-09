@@ -23,7 +23,7 @@ tspan = 0:size(data, 1)-1;
 % Social distancing effect
 sd_1st_val = 1.4;
 sd_2nd_val = [0.68, 0.68^2, 0.68^3];
-sd_3rd_val = sd_2nd_val;
+sd_3rd_val = 1;
 
 % School effect
 school = 1;
