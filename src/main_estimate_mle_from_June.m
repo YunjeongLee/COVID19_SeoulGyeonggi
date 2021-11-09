@@ -53,7 +53,7 @@ for j = 1:length(sd_2nd_val)
               % Social distancing effect
               'sd_1st', sd_1st_val, false, '1st social distancing effect';
               'sd_2nd', sd_1st_val * sd_2nd_val(j), false, '2nd social distancing effect';
-              'sd_3rd', sd_1st_val * sd_2nd_val(j), false, '3rd social distancing effect';
+              'sd_3rd', sd_1st_val * sd_2nd_val(j) * sd_3rd_val, false, '3rd social distancing effect';
               % School effect
               'school', school, false, 'School effect';
               % CFR or severeness
