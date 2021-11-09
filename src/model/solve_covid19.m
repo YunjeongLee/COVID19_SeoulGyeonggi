@@ -16,6 +16,7 @@ dt_ = parameter.dt;
 sd_1st_ = parameter.sd_1st;
 sd_2nd_ = parameter.sd_2nd;
 sd_3rd_ = parameter.sd_3rd;
+sd_4th_ = parameter.sd_4th;
 school_ = parameter.school;
 
 %% Solve model using difference equation
@@ -74,12 +75,12 @@ while i < length(tspan_)
         % Initialize contact_temp
         contact_temp = contact_;
         % All merged contacts except school effect
-        contact_temp = contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_);
+        contact_temp = contact_temp .* delta_effect_t .* social_distance(t, sd_1st_, sd_2nd_, sd_3rd_, sd_4th_);
         % If full attendance & no mask, multiply different value
         if school_ ~= Inf
             contact_temp(2, 2) = contact_temp(2, 2) .* school_effect(t, school_);
-        else
-            contact_temp(2, 2) = contact_(2, 2) * school_effect(t, 7.0721);
+        elseif (school_ == Inf) && (t >= 259)
+            contact_temp(2, 2) = contact_temp(2, 2) * school_effect(t, 7.0721) ./ social_distance(t, sd_1st_, sd_2nd_, sd_3rd_, sd_4th_);
         end
         % Beta at time t
         beta_t = beta_ .* contact_temp;

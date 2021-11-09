@@ -24,7 +24,8 @@ tspan = 0:length(date)-1;
 % Social distancing effect
 sd_1st_val = 1.4;
 sd_2nd_val = [0.68, 0.68^2, 0.68^3];
-sd_3rd_val = [1, 1.4, 1.4^2];
+sd_3rd_val = 1.4;
+sd_4th_val = 1.4;
 school = [1, 1.4, 1.4^2, Inf];
 filename_sd = {'same', '1', '2'};
 filename_sch = {'same', '1', '2', 'max'};
@@ -35,9 +36,6 @@ for k = 1:length(sd_2nd_val)
     load(sprintf('%s/result.mat', results_path), 'theta_mle')
     
     for i = 1:length(sd_3rd_val)
-        if k == 1 && i == 3
-            continue
-        end
         for j = 1:length(school)
             params = {% Parameters to be estimated
                       'beta', beta, false, '$\beta_1';
@@ -66,6 +64,7 @@ for k = 1:length(sd_2nd_val)
                       'sd_1st', sd_1st_val, false, '1st social distancing effect';
                       'sd_2nd', sd_1st_val * sd_2nd_val(k), false, '2nd social distancing effect';
                       'sd_3rd', sd_1st_val * sd_2nd_val(k) * sd_3rd_val(i), false, '3rd social distancing effect';
+                      'sd_4th', sd_1st_val * sd_2nd_val(k) * sd_3rd_val(i) * sd_4th_val, false, '3rd social distancing effect';
                       % School effect
                       'school', school(j), false, 'School effect';
                       % CFR or severeness
@@ -73,7 +72,7 @@ for k = 1:length(sd_2nd_val)
                       'severe', severe, false, 'severity'};
             
             %% Visualize prediction
-            results_path = sprintf('../results/predict_exp_%d_sd3_%s_school_%s', k, filename_sd{i}, filename_sch{j});
+            results_path = sprintf('../results/predict_exp_%d_sd_constant_school_%s', k, filename_sch{j});
             mkdir(results_path)
             visualize_fit(data, params, theta_mle, date, results_path);
         end
