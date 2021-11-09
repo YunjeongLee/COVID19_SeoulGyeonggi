@@ -20,11 +20,11 @@ vq = [repmat(vq(1), caldays(between(datetime(2021, 6, 1), datetime(2021, 6, 5), 
 vq = [zeros(caldays(between(datetime(2021, 2, 15), datetime(2021, 6, 1), 'Days')), 1); vq];
 
 %% Add delta proportion after 2021/09/04
-vq = [vq; repmat(vq(end), caldays(between(datetime(2021, 9, 4), datetime(2021, 12, 31), 'Days')), 1)];
+vq = [vq; repmat(vq(end), caldays(between(datetime(2021, 9, 4), datetime(2022, 1, 31), 'Days')), 1)];
 
 %% Generate table
 A = array2table([1 - vq, vq], 'VariableNames', {'alpha', 'delta'});
-A{:, 3} = (datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2021, 12, 31, 'format', 'yyyy/MM/dd'))';
+A{:, 3} = (datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2022, 1, 31, 'format', 'yyyy/MM/dd'))';
 A.Properties.VariableNames(end) = {'date'};
 
 % Rearrange variables
