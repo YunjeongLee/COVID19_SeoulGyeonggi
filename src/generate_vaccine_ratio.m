@@ -94,7 +94,7 @@ for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 9;
     elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 81;
+        num_to_repeat = caldays(between(datetime(2021, 10, 25), datetime(2022, 1, 31), 'Days'));
     else
         num_to_repeat = 7;
     end
