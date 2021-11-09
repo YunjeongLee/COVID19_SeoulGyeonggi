@@ -24,6 +24,7 @@ tspan = 0:size(data, 1)-1;
 sd_1st_val = 1.4;
 sd_2nd_val = [0.68, 0.68^2, 0.68^3];
 sd_3rd_val = 1;
+sd_4th_val = 1;
 
 % School effect
 school = 1;
