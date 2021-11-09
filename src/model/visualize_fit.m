@@ -91,3 +91,15 @@ ylabel('No. used beds')
 legend('Model', 'Data', 'location', 'northwest')
 set(gca, 'fontsize', 40);
 saveas(gca, sprintf('%s/num_beds.eps', results_path), 'epsc');
+
+%% Plot reproduction number
+figure('pos', [10 10 1000 600]);
+hold on;
+plot(date, Rt(1:1/dt_:end-1), 'linewidth', 2);
+yline(1, '-k');
+hold off;
+xlabel('Date')
+ylabel('R_t')
+ylim([0, 3])
+set(gca, 'fontsize', 40);
+saveas(gca, sprintf('%s/rep_num.eps', results_path), 'epsc');
