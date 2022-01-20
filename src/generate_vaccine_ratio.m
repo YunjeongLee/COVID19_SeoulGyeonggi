@@ -183,6 +183,30 @@ temp = vaccine_1st(start:final, :);
 % Paste it to vaccine_2nd
 vaccine_2nd = [vaccine_2nd; temp];
 
+%% 3rd dose (2021/02/26 ~ 2022/05/31)
+filename = "../data/vaccine/vaccination_12dose_05031031.xlsx";
+vaccine_after_0503 = readmatrix(filename, 'sheet', '3rd dose', 'range', 'B2:J9');
+
+% Change into weekly incident vaccination
+vaccine_after_0503 = vaccine_after_0503(2:end, :) - vaccine_after_0503(1:end-1, :);
+
+% Change into ratio
+vaccine_after_0503 = vaccine_after_0503 ./ sum(vaccine_after_0503, 2);
+
+vaccine_3rd = zeros(length(datetime(2021, 2, 26):datetime(2021, 10, 24)), size(vaccine_after_0503, 2));
+
+% Extend to matrix using repmat
+for i = 1:size(vaccine_after_0503, 1)
+    if i == 1
+        num_to_repeat = 41;
+    else
+        num_to_repeat = 7;
+    end
+    
+    vaccine_3rd = [vaccine_3rd; repmat(vaccine_after_0503(i, :), num_to_repeat, 1)];
+    
+end
+
 %% Generate csv file
 rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2022, 5, 31, 'format', 'yyyy/MM/dd'));
 varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
