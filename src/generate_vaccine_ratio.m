@@ -93,7 +93,7 @@ vaccine_after_0503 = vaccine_after_0503 ./ sum(vaccine_after_0503, 2);
 % Extend to matrix using repmat
 for i = 1:size(vaccine_after_0503, 1)
     if i == 1
-        num_to_repeat = 9;
+        num_to_repeat = 8;
     elseif i == size(vaccine_after_0503, 1)
         num_to_repeat = caldays(between(datetime(2021, 10, 25), datetime(2022, 1, 31), 'Days'));
     else
