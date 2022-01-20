@@ -184,7 +184,7 @@ temp = vaccine_1st(start:final, :);
 vaccine_2nd = [vaccine_2nd; temp];
 
 %% Generate csv file
-rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2022, 1, 31, 'format', 'yyyy/MM/dd'));
+rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2022, 5, 31, 'format', 'yyyy/MM/dd'));
 varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
 
 % Add zeros in front of 2021/02/26
