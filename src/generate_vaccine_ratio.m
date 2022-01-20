@@ -118,7 +118,7 @@ vaccine_before_0628 = vaccine_before_0628(2:end, :) - vaccine_before_0628(1:end-
 
 for i = 1:size(vaccine_before_0628, 1)
     if i == 1
-        num_to_repeat = 23;
+        num_to_repeat = 8;
     else
         num_to_repeat = 7;
     end
