@@ -149,7 +149,7 @@ vaccine_2nd = [zeros(size(vaccine_2nd, 1), 2), vaccine_2nd];
 
 %% 2021/06/28 to 2022/01/15 (2nd dose)
 filename = "../data/vaccine/vaccination_12dose_05031031.xlsx";
-vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:J28');
+vaccine_after_0503 = readmatrix(filename, 'sheet', '2nd dose', 'range', 'B11:J39');
 
 % Change into weekly incident vaccination
 vaccine_after_0503 = vaccine_after_0503(2:end, :) - vaccine_after_0503(1:end-1, :);
