@@ -207,6 +207,15 @@ for i = 1:size(vaccine_after_0503, 1)
     
 end
 
+%% 2022/01/16 to 2022/05/31 (3rd dose)
+% Get 2nd dose ratio by age between 2021/12/19 and 2022/05/03
+start = caldays(between(datetime(2021, 10, 25), datetime(2022, 1, 16)+1, 'Days'));
+final = caldays(between(datetime(2021, 10, 25), datetime(2022, 5, 31)+1, 'Days'));
+temp = vaccine_2nd(start:final, :);
+
+% Paste it to vaccine_3rd
+vaccine_3rd = [vaccine_3rd; temp];
+
 %% Generate csv file
 rownames = cellstr(datetime(2021, 2, 15, 'format', 'yyyy/MM/dd'):datetime(2022, 5, 31, 'format', 'yyyy/MM/dd'));
 varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80+'};
