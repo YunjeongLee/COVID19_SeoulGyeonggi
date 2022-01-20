@@ -161,6 +161,8 @@ vaccine_after_0503 = vaccine_after_0503 ./ sum(vaccine_after_0503, 2);
 for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 14;
+    elseif i == 26
+        num_to_repeat = 6;
     elseif i == size(vaccine_after_0503, 1)
         num_to_repeat = 6;
     else
