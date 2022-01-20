@@ -228,6 +228,7 @@ vaccine_3rd = [zeros(11, size(vaccine_3rd, 2)); vaccine_3rd];
 % Change into table
 vaccine_1st = array2table(vaccine_1st, 'RowNames', rownames, 'VariableNames', varnames);
 vaccine_2nd = array2table(vaccine_2nd, 'RowNames', rownames, 'VariableNames', varnames);
+vaccine_3rd = array2table(vaccine_3rd, 'RowNames', rownames, 'VariableNames', varnames);
 
 filename1 = "../data/vaccine/1st_dose_ratio_by_age.csv";
 filename2 = "../data/vaccine/2nd_dose_ratio_by_age.csv";
