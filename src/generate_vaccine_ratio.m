@@ -100,7 +100,7 @@ for i = 1:size(vaccine_after_0503, 1)
         vaccine_1st = [vaccine_1st; repmat(vaccine_after_0503(i-1, :), 7, 1)];
         continue
     elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = caldays(between(datetime(2021, 10, 25), datetime(2022, 1, 31), 'Days'));
+        num_to_repeat = caldays(between(datetime(2022, 1, 9), datetime(2022, 5, 31), 'Days'));
     else
         num_to_repeat = 7;
     end
