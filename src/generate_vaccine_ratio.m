@@ -166,8 +166,6 @@ for i = 1:size(vaccine_after_0503, 1)
     elseif any(vaccine_after_0503(i, :) < 0)
         vaccine_2nd = [vaccine_2nd; repmat(vaccine_after_0503(i-1, :), 7, 1)];
         continue
-    elseif i == size(vaccine_after_0503, 1)
-        num_to_repeat = 6;
     else
         num_to_repeat = 7;
     end
