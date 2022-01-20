@@ -78,7 +78,7 @@ end
 vaccine_1st = [zeros(size(vaccine_1st, 1), 2), vaccine_1st];
 
 %% Generate 2nd doses
-vaccine_2nd = [zeros(7*4, size(vaccine_1st, 2)); vaccine_1st(1:length(vaccine_1st)-14, :)];
+vaccine_2nd = [zeros(7*4, size(vaccine_1st, 2)-2); vaccine_1st(1:length(vaccine_1st)-14, 3:end)];
 
 %% 2021/05/02 to 2021/12/31 (1st dose)
 filename = "../data/vaccine/vaccination_12dose_05031031.xlsx";
