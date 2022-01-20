@@ -77,6 +77,9 @@ end
 %% Add vaccination dose for 0-9 and 10-19 for 1st dose
 vaccine_1st = [zeros(size(vaccine_1st, 1), 2), vaccine_1st];
 
+%% Generate 2nd doses
+vaccine_2nd = [zeros(7*4, size(vaccine_1st, 2)); vaccine_1st(1:length(vaccine_1st)-14, :)];
+
 %% 2021/05/02 to 2021/12/31 (1st dose)
 filename = "../data/vaccine/vaccination_12dose_05031031.xlsx";
 vaccine_after_0503 = readmatrix(filename, 'sheet', '1st dose', 'range', 'B2:J28');
