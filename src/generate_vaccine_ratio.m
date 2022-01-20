@@ -223,6 +223,7 @@ varnames = {'0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79'
 % Add zeros in front of 2021/02/26
 vaccine_1st = [zeros(11, size(vaccine_1st, 2)); vaccine_1st];
 vaccine_2nd = [zeros(11, size(vaccine_2nd, 2)); vaccine_2nd];
+vaccine_3rd = [zeros(11, size(vaccine_3rd, 2)); vaccine_3rd];
 
 % Change into table
 vaccine_1st = array2table(vaccine_1st, 'RowNames', rownames, 'VariableNames', varnames);
