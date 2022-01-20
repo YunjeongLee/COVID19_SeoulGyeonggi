@@ -161,7 +161,7 @@ vaccine_after_0503 = vaccine_after_0503 ./ sum(vaccine_after_0503, 2);
 for i = 1:size(vaccine_after_0503, 1)
     if i == 1
         num_to_repeat = 14;
-    elseif i == 26
+    elseif i == 17
         num_to_repeat = 6;
     elseif any(vaccine_after_0503(i, :) < 0)
         vaccine_2nd = [vaccine_2nd; repmat(vaccine_after_0503(i-1, :), 7, 1)];
