@@ -235,3 +235,4 @@ filename2 = "../data/vaccine/2nd_dose_ratio_by_age.csv";
 filename3 = "../data/vaccine/3rd_dose_ratio_by_age.csv";
 writetable(vaccine_1st, filename1,'WriteRowNames',true);
 writetable(vaccine_2nd, filename2,'WriteRowNames',true);
+writetable(vaccine_3rd, filename3,'WriteRowNames',true);
