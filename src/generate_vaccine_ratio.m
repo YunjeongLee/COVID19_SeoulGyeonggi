@@ -175,7 +175,7 @@ for i = 1:size(vaccine_after_0503, 1)
 end
 
 %% 2021/10/12 to 2021/12/31 (2nd dose)
-% Get 1st dose ratio by age between 2021/09/21 and 2021/12/03
+% Get 1st dose ratio by age between 2021/12/19 and 2022/05/03
 start = caldays(between(datetime(2021, 2, 26), datetime(2021, 12, 19)+1, 'Days'));
 final = caldays(between(datetime(2021, 2, 26), datetime(2022, 5, 3)+1, 'Days'));
 temp = vaccine_1st(start:final, :);
