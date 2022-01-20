@@ -23,7 +23,8 @@ tspan = 0:size(data, 1)-1;
 % Social distancing effect
 sd_1st_val = 1.4;
 sd_2nd_val = [0.68, 0.68^2, 0.68^3];
-sd_3rd_val = sd_2nd_val;
+sd_3rd_val = 1;
+sd_4th_val = 1;
 
 % School effect
 school = 1;
@@ -49,10 +50,14 @@ for j = 1:length(sd_2nd_val)
               % Hospitalization risk after each dose
               'hosp_1st', 1-0.75, false, 'hospitalization risk after 1st dose';
               'hosp_2nd', 1-0.94, false, 'hospitalization risk after 2nd dose';
+              % Deaths risk after each dose
+              'death_1st', 1-0.85, false, 'Death risk after 1st dose';
+              'death_2nd', 1-0.961, false, 'Death risk after 2nd dose';
               % Social distancing effect
               'sd_1st', sd_1st_val, false, '1st social distancing effect';
               'sd_2nd', sd_1st_val * sd_2nd_val(j), false, '2nd social distancing effect';
-              'sd_3rd', sd_1st_val * sd_2nd_val(j), false, '3rd social distancing effect';
+              'sd_3rd', sd_1st_val * sd_2nd_val(j) * sd_3rd_val, false, '3rd social distancing effect';
+              'sd_4th', sd_1st_val * sd_2nd_val(j) * sd_3rd_val * sd_4th_val, false, '4th social distancing effect';
               % School effect
               'school', school, false, 'School effect';
               % CFR or severeness

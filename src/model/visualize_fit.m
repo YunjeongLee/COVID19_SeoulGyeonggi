@@ -17,7 +17,7 @@ daily_confirmed = compute_daily_confirmed(parameter, sol);
 daily_severe = compute_daily_hospitalized(parameter, sol);
 
 %% Compute time-dependent reproduction number
-% Rt = compute_rep_num(parameter, sol);
+Rt = compute_rep_num(parameter, sol);
 
 %% Load Seoul, Gyeonggi confirmed cases
 filename = '../data/covid19/total_confirmed_case_seoul_gyeonggi.csv';
@@ -28,7 +28,7 @@ figure('pos', [10 10 1000 600]);
 hold on;
 plot(date, sum(daily_confirmed, 2), 'linewidth', 2);
 plot(date(1:length(data)), sum(data, 2), ':*');
-if length(date) > 199
+if length(date) > 260
     plot(date(length(data)+1:length(data_after_Sep)), data_after_Sep(length(data)+1:end), ':*')
     legend('Model', 'Data (before 9/1)', 'Data (after 9/1)', 'location', 'northwest')
 else
@@ -47,7 +47,7 @@ figure('pos', [10 10 1000 600]);
 hold on;
 plot(date, cumsum(sum(daily_confirmed, 2)), 'linewidth', 2);
 plot(date(1:length(data)), cumsum(sum(data, 2)), ':*', 'linewidth', 2);
-if length(date) > 199
+if length(date) > 260
     plot(date(length(data)+1:length(data_after_Sep)), sum(data, 'all') + cumsum(data_after_Sep(length(data)+1:end)), ':*')
     legend('Model', 'Data (before 9/1)', 'Data (after 9/1)', 'location', 'northwest')
 else
@@ -91,3 +91,15 @@ ylabel('No. used beds')
 legend('Model', 'Data', 'location', 'northwest')
 set(gca, 'fontsize', 40);
 saveas(gca, sprintf('%s/num_beds.eps', results_path), 'epsc');
+
+%% Plot reproduction number
+figure('pos', [10 10 1000 600]);
+hold on;
+plot(date, Rt(1:1/dt_:end-1), 'linewidth', 2);
+yline(1, '-k');
+hold off;
+xlabel('Date')
+ylabel('R_t')
+ylim([0, 3])
+set(gca, 'fontsize', 40);
+saveas(gca, sprintf('%s/rep_num.eps', results_path), 'epsc');

@@ -23,7 +23,7 @@ results_path = '../results/data';
 mkdir(results_path);
 
 %% Plot vaccination number
-date = datetime(2021, 2, 15):datetime(2021, 10, 18);
+date = datetime(2021, 2, 15):datetime(2021, 10, 31);
 n = length(date);
 
 % Delta proportion
